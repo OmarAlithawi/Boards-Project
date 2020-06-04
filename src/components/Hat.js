@@ -1,11 +1,29 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import db from '../container/FirebaseConfig'
+import  '../App.css'
 
 export default function Hat(props) {
-    //form to add items to the targeted collection , deleteBtn , and editBtn 
 
+  const [hatItems , setHatItems] = useState([])
+
+  const liveUpdate = async () =>{
+   if(props.boardID ){ 
+    await  db.collection("container").doc(props.boardID).collection(props.collectionName).onSnapshot(snapshot =>{
+        let changes = snapshot.docChanges();
+        changes.forEach(change =>{
+            if(change.type === "added"){ 
+            setHatItems(hatItems => [...hatItems ,change.doc.data()]);
+            }
+        })
+      }) 
+    }
+    }
+
+   
+
+   
     
-    
+  
   const postData = async (e) => {
     e.preventDefault()
     e.persist()
@@ -16,29 +34,26 @@ export default function Hat(props) {
   }
 
 
-  console.log(props.collectionName)
-   const render = (data) => {
-         
-    return  data.map((doc ,ind) => {
-       return(
-         <div key ={ind} data-id = {doc.id}>
-            <p>{doc.data().text}</p>
-            <p>{doc.data().color}</p>
-            <p>{doc.data().todo}</p>
-          </div>
-             )
-           })
-
-           
+   const renderItems = () => {  
+      return hatItems.map((doc, index) => {
+          return(
+            <div>
+                <p>{doc.todo}</p>
+            </div>
+          )
+          })
     }
-   
+
     return (
         <div>
-            <form onSubmit = {(e) =>postData(e)}>
-                <input type="text" name = {props.collectionName}  placeholder = {props.collectionName}/>
+            <form onSubmit = {(e) =>{
+              postData(e)
+              liveUpdate(e)
+            }}>
+                <input type="text" id = {props.uniqueID} name = {props.collectionName}  placeholder = {props.collectionName}/>
                 <button>Add something</button>
             </form>
-            {props.hat &&  render(props.hat)}
+          <div id = {props.uniqueID}>{renderItems()}</div>
         </div>
     )
      }
