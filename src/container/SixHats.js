@@ -6,9 +6,7 @@ import  '../App.css'
 export default function SixHats() {
 
 
-    const [ids , setIDs] =  useState([]);
     const [currentBoardID , setCurrentBoardID] = useState("");
-    const [hatsData , setHatsData] = useState([]);
     const [collectionName , setCollectionName] = useState([]);
 
             
@@ -16,50 +14,34 @@ export default function SixHats() {
 
     const createBoards = async() =>{
         const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-        const createDocument = await db.collection('container').add({});
+        const createBoard = await db.collection('container').add({});
         collectionsNames.forEach( async(collection) => {
-        const createCollections = await db.collection('container').doc(createDocument.id).collection(collection).add({});
+        const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
     })
-    setCurrentBoardID(createDocument.id);
-    gettingData(createDocument.id)
+        setCurrentBoardID(createBoard.id);
+        setCollectionName(collectionsNames)
      }
 
-// getting the collections and passing it to the hat component 
+// rendering hats
 
-     const gettingData = (id) => {
-        const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-        collectionsNames.forEach( async (collection) => {
-        const collectionsData = await db.collection("container").doc(id).collection(collection).get();
-        setHatsData(hatsData => [...hatsData , collectionsData.docs]); 
-            
-    })
-    setCollectionName(collectionsNames) 
-   }
-
-   
-
-   const renderHat = () => {
-    let uniqueID = -1;
+   const renderHats = () => {
     return collectionName.map((collection) => {
-            uniqueID++;
             return(
-                <div>
-                     {currentBoardID && <Hat  uniqueID = {uniqueID}  collectionName = {collection} hat ={hatsData} boardID = {currentBoardID} />}
-                </div>
+              <div>
+                 {currentBoardID &&  <Hat  collectionName = {collection}  boardID = {currentBoardID} />}
+              </div>
             )
         })
    }
 
 
     return (
- 
         <div>
-            <button onClick = {createBoards}>add board</button>
+            <button onClick = {createBoards}>Add board</button>
             <div className="board" >
-            {renderHat()}
+                {renderHats()}
+             </div>
         </div>
-        </div>
-        
     )
 }
 

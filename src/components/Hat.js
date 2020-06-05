@@ -1,62 +1,52 @@
 import React,{useState, useEffect} from 'react'
 import db from '../container/FirebaseConfig'
 import  '../App.css'
+import HatItems from './HatItems'
 
 export default function Hat(props) {
+  
+  const [hatItemsData , setHatItemsData] = useState([])
 
-  const [hatItems , setHatItems] = useState([])
-
-  const liveUpdate = async () =>{
-   if(props.boardID ){ 
+  const liveUpdateData = async () =>{
+   if(props.boardID){ 
     await  db.collection("container").doc(props.boardID).collection(props.collectionName).onSnapshot(snapshot =>{
         let changes = snapshot.docChanges();
         changes.forEach(change =>{
-            if(change.type === "added"){ 
-            setHatItems(hatItems => [...hatItems ,change.doc.data()]);
+            if(change.type === "added" && Object.keys(change.doc.data()).length > 0){ 
+              setHatItemsData(hatItemsData => [...hatItemsData ,change.doc.data()]);
             }
         })
       }) 
     }
-    }
+  }
 
-   
-
-   
-    
   
+  useEffect(() => {
+    liveUpdateData();
+  }, [])
+
   const postData = async (e) => {
-    e.preventDefault()
-    e.persist()
+    console.log(hatItemsData)
+    e.preventDefault();
+    e.persist();
     await db.collection('container').doc(props.boardID).collection(e.target[0].name).add({
       todo:e.target[0].value,
     });
-   e.target.reset()
+    
+   e.target.reset();
   }
 
 
-   const renderItems = () => {  
-      return hatItems.map((doc, index) => {
-          return(
-            <div>
-                <p>{doc.todo}</p>
-            </div>
-          )
-          })
-    }
-
     return (
         <div>
-            <form onSubmit = {(e) =>{
-              postData(e)
-              liveUpdate(e)
-            }}>
-                <input type="text" id = {props.uniqueID} name = {props.collectionName}  placeholder = {props.collectionName}/>
+            <form onSubmit = {(e) => postData(e)}>
+                <input type="text" name = {props.collectionName}  placeholder = {props.collectionName}/>
                 <button>Add something</button>
             </form>
-          <div id = {props.uniqueID}>{renderItems()}</div>
+          <div>{hatItemsData.length > 1 && <HatItems  data = {hatItemsData}  />}</div>
         </div>
     )
-     }
+}
      
    
 
