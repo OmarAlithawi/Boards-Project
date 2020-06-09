@@ -1,5 +1,5 @@
 import React from 'react'
-import Appbar from './SidebarAndAppbar/Appbar'
+import Appbar from './Bars/Appbar'
 
 
 export default function About() {

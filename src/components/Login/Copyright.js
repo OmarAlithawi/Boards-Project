@@ -1,16 +1,16 @@
 import React from "react";
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import { Typography, Link } from '@material-ui/core';
+import './App.css';
 
 export default function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Thinking Hats
-      </Link>{' '}
+        <Typography color="textSecondary" align="center">
+            { 'Copyright ©' }
+            <Link color="inherit" href="https://github.com/OmarAlithawi/Boards-Project" target="_blank">
+               { 'Thinking Hats' }
+            </Link>{' '}
             {new Date().getFullYear()}
-            {'.'}
+           { '.' }
         </Typography>
     );
 }

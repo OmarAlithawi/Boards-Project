@@ -1,18 +1,11 @@
 import React from 'react';
-import useStyles from './StyleBars'
-import Drawer from "@material-ui/core/Drawer";
-import Appbar from './Appbar';
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import { Drawer, Toolbar, List, Divider, ListItem, ListItemIcon, ListItemText, IconButton} from "@material-ui/core";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
-import IconButton from '@material-ui/core/IconButton';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+import Appbar from './Appbar';
+import useStyles from './StyleBars'
 
 
 

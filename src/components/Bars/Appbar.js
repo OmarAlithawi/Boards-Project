@@ -1,5 +1,5 @@
 import React  from "react";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Navbar";
 import useStyles from './StyleBars';
 import AppBar from "@material-ui/core/AppBar";
 
