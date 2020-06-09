@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import Hat from '../components/Hat'
-import db from './FirebaseConfig'
+import {db} from '../components/firebase'
 import  '../App.css'
 
 export default function SixHats() {
@@ -8,8 +8,9 @@ export default function SixHats() {
 
     const [currentBoardID , setCurrentBoardID] = useState("");
     const [collectionName , setCollectionName] = useState([]);
-
-            
+    const [boardsIDs , setBoardIDs] = useState([])
+    
+    
 // create boards with dcouments and collections 
 
     const createBoards = async() =>{
@@ -20,7 +21,12 @@ export default function SixHats() {
     })
         setCurrentBoardID(createBoard.id);
         setCollectionName(collectionsNames)
+        setBoardIDs(boardsIDs => [...boardsIDs , createBoard.id])
      }
+
+    
+    // functions that render the last board 
+    
 
 // rendering hats
 
@@ -44,5 +50,4 @@ export default function SixHats() {
         </div>
     )
 }
-
 

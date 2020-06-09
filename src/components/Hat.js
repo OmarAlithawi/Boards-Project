@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import db from '../container/FirebaseConfig'
+import {db} from './firebase'
 import  '../App.css'
 import HatItems from './HatItems'
 
@@ -11,6 +11,7 @@ export default function Hat(props) {
    if(props.boardID){ 
     await  db.collection("container").doc(props.boardID).collection(props.collectionName).onSnapshot(snapshot =>{
         let changes = snapshot.docChanges();
+        console.log(changes)
         changes.forEach(change =>{
             if(change.type === "added" && Object.keys(change.doc.data()).length > 0){ 
               setHatItemsData(hatItemsData => [...hatItemsData ,change.doc.data()]);
@@ -21,9 +22,11 @@ export default function Hat(props) {
   }
 
   
+  
   useEffect(() => {
     liveUpdateData();
-  }, [])
+    setHatItemsData([]);
+  }, [props.boardID])
 
   const postData = async (e) => {
     console.log(hatItemsData)
@@ -43,7 +46,7 @@ export default function Hat(props) {
                 <input type="text" name = {props.collectionName}  placeholder = {props.collectionName}/>
                 <button>Add something</button>
             </form>
-          <div>{hatItemsData.length > 1 && <HatItems  data = {hatItemsData}  />}</div>
+          <div>{<HatItems  data = {hatItemsData}  />}</div>
         </div>
     )
 }
