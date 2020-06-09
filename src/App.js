@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react';
 import Home from "./components/Home/Home";
 import About from "./components/About";
@@ -6,8 +7,9 @@ import Contact from "./components/Contact";
 import Signup from "./components/Login/Signup";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import firebase from "../src/components/firebase"
-
 import './App.css';
+import SixHats from './container/SixHats'
+
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
        <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} /> 
     </Router>
+
     </div>
 ) : <div id="loader"></div>
 }
