@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ /* Navbar */
+.navigation-items {
+  text-align: right;
+  margin: 0 2% 2% 0;
+  bottom: 157px;
+  color: aliceblue;
+  text-decoration: none;
+}
+.navigation-items:hover {
+  color: #89f7fe;
+}
+.navbar-head {
+  margin-left: 70%;
+}
+.avatar-img {
+  bottom: 7px;
+}
+.dashboard {
+  color: white;
+}
