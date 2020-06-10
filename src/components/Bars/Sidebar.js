@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect , useState} from 'react';
 import { Drawer, Toolbar, List, Divider, ListItem, ListItemIcon, ListItemText, IconButton} from "@material-ui/core";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
@@ -6,10 +6,30 @@ import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import Appbar from './Appbar';
 import useStyles from './StyleBars'
+import {db} from '../../components/firebase';
+import {currentBoardID , collectionName , boardsIDs} from '../../actions';
+import {useDispatch} from 'react-redux';
+
 
 
 
 export default function Sidebar(){
+
+  const dispatch = useDispatch();
+  
+  const createBoards = async() =>{
+  
+    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+    const createBoard = await db.collection('container').add({});
+    collectionsNames.forEach( async(collection) => {
+    const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
+  })
+  dispatch(currentBoardID(createBoard.id));
+  dispatch(collectionName(collectionsNames));
+  dispatch(boardsIDs(createBoard.id));
+  
+  }
+
   const classes = useStyles();
     return (
       <div className={classes.root}>
@@ -27,7 +47,7 @@ export default function Sidebar(){
           </List>
           <Divider />
           
-          <IconButton className={classes.plusButton} style={{ backgroundColor: 'transparent' }} >
+          <IconButton  onClick = {createBoards} className={classes.plusButton} style={{ backgroundColor: 'transparent' }} >
             <AddCircleRoundedIcon className={classes.plusButtonInside} />
           </IconButton>
 

@@ -13,9 +13,7 @@ code {
 }
  /* Navbar */
 .navigation-items {
-  text-align: right;
-  margin: 0 2% 2% 0;
-  bottom: 157px;
+  margin-left: 2%;
   color: aliceblue;
   text-decoration: none;
 }
@@ -23,11 +21,31 @@ code {
   color: #89f7fe;
 }
 .navbar-head {
-  margin-left: 70%;
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+  height: 100%;
+
 }
 .avatar-img {
-  bottom: 7px;
+  margin-left: 2%;
 }
 .dashboard {
   color: white;
+}
+
+.heading{
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  list-style: none;
+}
+
+.listItems{
+  display: flex;
+  width: 100%;
+  background-color: red;
+  justify-content: space-evenly;
 }

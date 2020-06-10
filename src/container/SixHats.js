@@ -1,37 +1,18 @@
-import React, {useEffect, useState } from 'react'
-import Hat from '../components/Hat'
-import {db} from '../components/firebase'
-import  '../App.css'
+import React, {useEffect, useState } from 'react';
+import Hat from '../components/Hat';
+import {db} from '../components/firebase';
+import  '../App.css';
+import {useSelector} from 'react-redux';
 
 export default function SixHats() {
 
-
-    const [currentBoardID , setCurrentBoardID] = useState("");
-    const [collectionName , setCollectionName] = useState([]);
-    const [boardsIDs , setBoardIDs] = useState([])
-    
-    
-// create boards with dcouments and collections 
-
-    const createBoards = async() =>{
-        const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-        const createBoard = await db.collection('container').add({});
-        collectionsNames.forEach( async(collection) => {
-        const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
-    })
-        setCurrentBoardID(createBoard.id);
-        setCollectionName(collectionsNames)
-        setBoardIDs(boardsIDs => [...boardsIDs , createBoard.id])
-     }
-
-    
-    // functions that render the last board 
-    
+    const currentBoardID = useSelector(state => state.currentBoardIDReducer);
+    const collectionsName =useSelector(state => state.collectionNameReducer);
 
 // rendering hats
 
    const renderHats = () => {
-    return collectionName.map((collection) => {
+    return collectionsName.map((collection) => {
             return(
               <div>
                  {currentBoardID &&  <Hat  collectionName = {collection}  boardID = {currentBoardID} />}
@@ -43,7 +24,6 @@ export default function SixHats() {
 
     return (
         <div>
-            <button onClick = {createBoards}>Add board</button>
             <div className="board" >
                 {renderHats()}
              </div>
