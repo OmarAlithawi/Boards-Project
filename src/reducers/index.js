@@ -25,7 +25,7 @@ const boardsIDsReducer = (state = [] , action) => {
         }
     }
 
-const itemsIDsReducer = (state = [] , action) => {
+const allItemsIdsReducer = (state = [] , action) => {
      switch(action.type) {
        case "ITEMS_IDS" :
           return [...state , action.payload];
@@ -34,7 +34,7 @@ const itemsIDsReducer = (state = [] , action) => {
      }
 }
 
-const itemIDReducer = (state = [] , action) => {
+const listItemIdReducer = (state = "" , action) => {
     switch(action.type) {
       case "ITEM_ID" :
          return action.payload;
@@ -59,8 +59,8 @@ const allReducers = combineReducers({
     currentBoardIDReducer,
     collectionNameReducer,
     boardsIDsReducer,
-    itemsIDsReducer,
-    itemIDReducer,
+    allItemsIdsReducer,
+    listItemIdReducer,
     boardNameReducer
     });
 

@@ -19,14 +19,14 @@ export const boardsIDsAction = (data) => {
     }
 }
 
-export const itemsIDsAction = (data) => {
+export const allItemsIdsAction = (data) => {
     return {
         type:"ITEMS_IDS" ,
         payload:data  
     }
 }
 
-export const itemIDAction = (data) => {
+export const listItemIdAction = (data) => {
     return {
         type:"ITEM_ID" ,
         payload:data  

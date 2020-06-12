@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 
 export default function SixHats() {
 
-    const currentBoardID = useSelector(state => state.currentBoardIDReducer);
+    const currentBoardId = useSelector(state => state.currentBoardIDReducer);
     const collectionsName =useSelector(state => state.collectionNameReducer);
 
 // rendering hats
@@ -15,7 +15,7 @@ export default function SixHats() {
     return collectionsName.map((collection , index) => {
             return(
               <div>
-                 {<Hat  key = {index} collectionName = {collection}  boardID = {currentBoardID} />}
+                 {<Hat  key = {index} collectionName = {collection}  boardID = {currentBoardId} />}
               </div>
             )
         })

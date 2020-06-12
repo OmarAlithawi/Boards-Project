@@ -37,17 +37,24 @@ code {
 .heading{
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .list {
   list-style: none;
+  position: relative;
+  right: 40px;
+  width: 100%;
 }
 
 .listItems{
   display: flex;
   width: 100%;
-  background-color: red;
+ padding: 5px;
+ box-shadow: 3px 1px 10px rgba(0, 0, 0, .15);
+ border: 1px solid rgba(0, 0, 0, .15);
   justify-content: space-evenly;
+  border-radius: 3px;
 }
 
 
@@ -55,4 +62,8 @@ code {
   display: flex;
   justify-content: space-between;
  
+}
+
+.column {
+  margin-right: 30px;
 }
