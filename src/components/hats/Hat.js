@@ -3,16 +3,17 @@ import {db} from '../auth/firebase'
 import  '../../App.css'
 import HatItems from './HatItems'
 import {useSelector , useDispatch} from 'react-redux';
-import {itemsIDs ,itemID} from '../../actions'
+import {itemsIDsAction ,itemIDAction} from '../../actions'
 
 export default function Hat(props) {
 
   const dispatch = useDispatch();
 
   const currentBoardID = useSelector(state => state.currentBoardIDReducer);
-  const itemsID = useSelector(state => state.itemsIDsReducer);
-  const itemsIDss = useSelector(state => state.itemsIDsReducer);
-  const [hatItemsData , setHatItemsData] = useState([])
+  const itemID = useSelector(state => state.itemIDReducer);
+  const itemsIDs = useSelector(state => state.itemsIDsReducer);
+  const [hatItemsData , setHatItemsData] = useState([]);
+  
   
   const liveUpdateData = async () =>{
    if(props.boardID){ 
@@ -20,21 +21,31 @@ export default function Hat(props) {
         let changes = snapshot.docChanges();
         changes.forEach(change =>{
             if(change.type === "added" && Object.keys(change.doc.data()).length > 0){ 
-              setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]);
-              dispatch(itemsIDs(change.doc.id))
-              dispatch(itemID(change.doc.id))
+              setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]); 
+              dispatch(itemsIDsAction(change.doc.id));
+              console.log(change.doc);
+            }else if(change.type === 'removed'){
+              filtering(hatItemsData);
             }
-            
         })
       }) 
     }
   }
-  
+
   useEffect(() => {
+    
     liveUpdateData();
     setHatItemsData([]);
   }, [props.boardID ])
 
+
+  const filtering = (data) => {
+      const filteredData =data.filter(doc => {
+        return doc.id !== itemID;
+      })
+      console.log(filteredData);
+      setHatItemsData(filteredData);
+  }
 
   const postData = async (e) => {
     e.preventDefault();
@@ -42,11 +53,8 @@ export default function Hat(props) {
     await db.collection('container').doc(props.boardID).collection(e.target[0].name).add({
       todo:e.target[0].value,
     });
-    
    e.target.reset();
   }
-
-    
 
 
     return (

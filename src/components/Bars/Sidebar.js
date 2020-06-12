@@ -7,7 +7,7 @@ import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import Appbar from './Appbar';
 import useStyles from './StyleBars'
 import {db} from '../auth/firebase';
-import {currentBoardID , collectionName , boardsIDs , boardName} from '../../actions';
+import {currentBoardIDAction , collectionNameAction , boardsIDsAction , boardNameAction} from '../../actions';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
@@ -17,7 +17,7 @@ import { useHistory } from 'react-router-dom'
 export default function Sidebar(){
 
   const dispatch = useDispatch();
-  const boardsName = useSelector(state => state.boardNameReducer);
+  const boardName = useSelector(state => state.boardNameReducer);
   const [hatsName , setHatsName ] = useState("");
 
   const history = useHistory();
@@ -40,9 +40,9 @@ export default function Sidebar(){
     collectionsNames.forEach( async(collection) => {
     const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
   })
-  dispatch(currentBoardID(createBoard.id));
-  dispatch(collectionName(collectionsNames));
-  dispatch(boardsIDs(createBoard.id));
+  dispatch(currentBoardIDAction(createBoard.id));
+  dispatch(collectionNameAction(collectionsNames));
+  dispatch(boardsIDsAction(createBoard.id));
   
   }
 
@@ -68,7 +68,7 @@ export default function Sidebar(){
              <TextField className={classes.textField} name = {hatsName} onChange = {(e) => setHatsName(e.target.value)}/>
             <AddCircleRoundedIcon  onClick = {(e) => {
             createBoards() ; 
-            dispatch(boardName(hatsName)) ;
+            dispatch(boardNameAction(hatsName)) ;
             changeRouteBoard();
           
           }} className={classes.plusButtonInside} />

@@ -1,39 +1,39 @@
-export const currentBoardID = (data) => {
+export const currentBoardIDAction = (data) => {
     return {
         type:"CURRENT_BOARD_ID" ,
         payload:data  
     }
 }
 
-export const collectionName = (data) => {
+export const collectionNameAction = (data) => {
     return {
         type:"COLLECTION_NAME" ,
         payload:data  
     }
 }
 
-export const boardsIDs = (data) => {
+export const boardsIDsAction = (data) => {
     return {
         type:"BOARDS_IDS" ,
         payload:data  
     }
 }
 
-export const itemsIDs = (data) => {
+export const itemsIDsAction = (data) => {
     return {
         type:"ITEMS_IDS" ,
         payload:data  
     }
 }
 
-export const itemID = (data) => {
+export const itemIDAction = (data) => {
     return {
         type:"ITEM_ID" ,
         payload:data  
     }
 }
 
-export const boardName = (data) => {
+export const boardNameAction = (data) => {
     return {
         type:"BOARD_NAME" ,
         payload:data  

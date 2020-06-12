@@ -12,10 +12,10 @@ export default function SixHats() {
 // rendering hats
 
    const renderHats = () => {
-    return collectionsName.map((collection) => {
+    return collectionsName.map((collection , index) => {
             return(
               <div>
-                 {<Hat  collectionName = {collection}  boardID = {currentBoardID} />}
+                 {<Hat  key = {index} collectionName = {collection}  boardID = {currentBoardID} />}
               </div>
             )
         })

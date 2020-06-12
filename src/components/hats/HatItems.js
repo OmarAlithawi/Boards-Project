@@ -1,32 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {db} from '../auth/firebase'
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import {itemsIDsAction ,itemIDAction} from '../../actions'
+import { render } from 'react-dom';
 
 export default function HatItems(props) {
 
     const itemsIDs = useSelector(state => state.itemsIDsReducer);
     const itemID = useSelector(state => state.itemIDReducer);
-    
-    
+    const dispatch = useDispatch();
+    const [test , setTest] = useState([]);
 
-    const deleteItem = async (e) =>{
+    const deleteItem =  (e) =>{
         e.preventDefault()
         let id = e.target.parentNode.getAttribute("board-id");
         let collectionName = e.target.parentNode.parentNode.getAttribute("name");
-        await db.collection("container").doc(id).collection(collectionName).doc(itemID).delete();
-       
+        console.log(itemID)
+         db.collection("container").doc(id).collection(collectionName).doc(itemID).delete();
+       /*
+         const filteredData = props.data.filter(doc => {
+            return doc.id !== itemID;
+        })
+
+        setTest(filteredData)
+        */
       }
+  
 
     return (
         <ul className = "list"  name ={props.name}>
-            {props.data.map((doc, index) => {
-            return( 
-            <div board-id ={props.id} className = "listItems" >
-            <li >{doc.data().todo}</li>
-            <button onClick = {(e) => deleteItem(e)}>del</button>
-            </div> 
-            )
-        })}
+        { props.data.map(doc =>{
+                return( 
+                    <div board-id ={props.id} className = "listItems" >
+                    <li >{doc.data().todo}</li>
+                    <button onClick = {(e) => {
+                        dispatch(itemIDAction(doc.id))
+                        deleteItem(e)}}>del</button>
+                    </div> 
+                    )
+             })}
         </ul>
     )
 }

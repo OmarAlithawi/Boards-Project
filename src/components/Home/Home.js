@@ -10,21 +10,29 @@ import Navbar from '../bars/Navbar'
 
 function Home(props) {
 
-    
+    // Clock
     const [date, setDate] = useState(new Date());
-  
+
     useEffect(() => {
      const timerID = setInterval( () => tick(), 1000 );
      return function cleanup() {
          clearInterval(timerID);
        };
     } , []);
-   
       const tick = () => {
        setDate(new Date());
       }
-     
+     // Clock ends
     
+     const partOfTheDay = () => {
+        if(date.getHours() < 12){
+            return 'Good Morning'
+        }else if(date.getHours() > 12 && date.getHours() < 18){
+            return 'Good Afternoon'
+        }else{
+            return 'Good Night'
+        }
+     }
      
     
 
@@ -42,12 +50,13 @@ function Home(props) {
 
     return (
         <div className="home-body">
+           
             <Sidebar />
             <main className={classes.main}>
                 <div>
                 <Typography className = "heading" component="h1" variant="h5" >
-                     Hello {firebase.getCurrentUserName()}
-                     <h1>{date.toLocaleTimeString('en-US')}</h1>
+                {partOfTheDay()} {firebase.getCurrentUserName()}
+                     <h1>{date.toLocaleTimeString()}</h1>
                 </Typography>
                 </div>
                 
