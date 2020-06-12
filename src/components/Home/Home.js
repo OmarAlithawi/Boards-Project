@@ -1,17 +1,33 @@
-import React from 'react'
+import React, {useEffect , useState} from 'react'
 import { Typography  ,Box } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
-import firebase from "../firebase";
-import Sidebar from "../Bars/Sidebar"
+import firebase from "../auth/firebase";
+import Sidebar from "../bars/Sidebar"
 import useStyles from "./StyleHome";
-import SixHats from '../../container/SixHats'
-import Navbar from '../Navbar/Navbar'
-
-
-
+import SixHats from '../hats/SixHats'
+import Navbar from '../bars/Navbar'
 
 
 function Home(props) {
+
+    
+    const [date, setDate] = useState(new Date());
+  
+    useEffect(() => {
+     const timerID = setInterval( () => tick(), 1000 );
+     return function cleanup() {
+         clearInterval(timerID);
+       };
+    } , []);
+   
+      const tick = () => {
+       setDate(new Date());
+      }
+     
+    
+     
+    
+
 
 	const classes = useStyles();
 
@@ -27,17 +43,21 @@ function Home(props) {
     return (
         <div className="home-body">
             <Sidebar />
-            <Navbar />
             <main className={classes.main}>
                 <div>
                 <Typography className = "heading" component="h1" variant="h5" >
-                    Hello {firebase.getCurrentUserName()}
+                     Hello {firebase.getCurrentUserName()}
+                     <h1>{date.toLocaleTimeString('en-US')}</h1>
                 </Typography>
                 </div>
-                    <SixHats />
+                
 		    </main>
         </div>
         )
 }
 
 export default withRouter(Home)
+
+/*
+Hello {firebase.getCurrentUserName()}
+*/

@@ -1,8 +1,7 @@
 import React from 'react'
-import Appbar from './Bars/Appbar'
+import Appbar from '../bars/Appbar'
 
-
-export default function About() {
+export default function Contact() {
     return (
         <div>
             <Appbar />

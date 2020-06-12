@@ -4,7 +4,7 @@ import 'firebase/database';
 
 
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCYVPF76uDp25ySsR0KyAlrQCyyfO1Hm5U",
     authDomain: "boardproject-5dc24.firebaseapp.com",
     databaseURL: "https://boardproject-5dc24.firebaseio.com",

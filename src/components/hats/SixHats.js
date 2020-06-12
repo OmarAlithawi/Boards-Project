@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
-import Hat from '../components/Hat';
-import {db} from '../components/firebase';
-import  '../App.css';
+import Hat from './Hat';
+import {db} from '../auth/firebase';
+
 import {useSelector} from 'react-redux';
 
 export default function SixHats() {
@@ -15,7 +15,7 @@ export default function SixHats() {
     return collectionsName.map((collection) => {
             return(
               <div>
-                 {currentBoardID &&  <Hat  collectionName = {collection}  boardID = {currentBoardID} />}
+                 {<Hat  collectionName = {collection}  boardID = {currentBoardID} />}
               </div>
             )
         })

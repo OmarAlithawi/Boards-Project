@@ -29,12 +29,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
   },
   plusButtonInside: {
-      marginLeft: 180,
       color: '#89f7fe',
   },
   icons: {
       color: '#66a6ff',
-  }
+  },
+  
+  
+  
 }));
 
 export default useStyles;

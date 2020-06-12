@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import Logout from "./Logout";
+import Logout from "../auth/login/Logout";
 // Navbar styled in index.css 
 
 

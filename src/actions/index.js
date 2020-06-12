@@ -33,3 +33,9 @@ export const itemID = (data) => {
     }
 }
 
+export const boardName = (data) => {
+    return {
+        type:"BOARD_NAME" ,
+        payload:data  
+    }
+}

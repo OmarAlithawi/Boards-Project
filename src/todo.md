@@ -29,8 +29,8 @@
  ## today 
   - Changing the button from addboard to the plus btn ---- **DONE**
   - Center the board ---- **DONE**
-  - add field for the board name 
-  - delete or edit btn 
+  - board name ---- **DONE**
   - Render onload 
-  - board name 
+  - delete or edit btn 
   - tasks completed 
+  - btn to edit board name
