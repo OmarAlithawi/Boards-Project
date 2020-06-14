@@ -1,4 +1,4 @@
-import React, {useEffect , useState} from 'react';
+import React, { useState } from 'react';
 import { Drawer, Toolbar, List, Divider, ListItem, ListItemIcon, ListItemText, IconButton ,TextField} from "@material-ui/core";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
@@ -17,7 +17,6 @@ import { useHistory } from 'react-router-dom'
 export default function Sidebar(){
 
   const dispatch = useDispatch();
-  const boardName = useSelector(state => state.boardNameReducer);
   const [hatsName , setHatsName ] = useState("");
 
   const history = useHistory();
@@ -46,6 +45,7 @@ export default function Sidebar(){
   
   }
 
+
   
   const classes = useStyles();
     return (
@@ -64,9 +64,9 @@ export default function Sidebar(){
           </List>
           <Divider />
           
-          <IconButton  className={classes.plusButton} style={{ backgroundColor: 'transparent' }} >
+          <IconButton   className={classes.plusButton} style={{ backgroundColor: 'transparent' }} >
              <TextField className={classes.textField} name = {hatsName} onChange = {(e) => setHatsName(e.target.value)}/>
-            <AddCircleRoundedIcon  onClick = {(e) => {
+            <AddCircleRoundedIcon   onClick = {(e) => {
             createBoards() ; 
             dispatch(boardNameAction(hatsName)) ;
             changeRouteBoard();
@@ -92,4 +92,41 @@ export default function Sidebar(){
 /**
    const input = e.target.parentNode.firstChild.value
               console.log(input);
+ */
+
+ /*
+  
+  const createBoards = async() =>{
+  
+    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+    const createBoard = await db.collection('container').add({
+      projectName : hatsName
+    });
+    collectionsNames.forEach( async(collection) => {
+    const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
+  })
+  dispatch(currentBoardIDAction(createBoard.id));
+  dispatch(collectionNameAction(collectionsNames));
+  dispatch(boardsIDsAction(createBoard.id));
+  
+  }
+
+
+  const createBoards = async() =>{
+  
+    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+    const createBoard = await db.collection('container').add({
+      'black-hat': {},
+      'white-hat': {},
+      'blue-hat':{},
+      'red-hat':{},
+      'green-hat':{},
+      'yellow-hat':{}
+    });
+    
+  dispatch(currentBoardIDAction(createBoard.id));
+  dispatch(collectionNameAction(collectionsNames));
+  dispatch(boardsIDsAction(createBoard.id));
+  
+  }
  */

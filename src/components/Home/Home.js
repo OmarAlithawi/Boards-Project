@@ -1,11 +1,11 @@
 import React, {useEffect , useState} from 'react'
-import { Typography  ,Box } from '@material-ui/core'
+import { Typography  } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import firebase from "../auth/firebase";
 import Sidebar from "../bars/Sidebar"
 import useStyles from "./StyleHome";
-import SixHats from '../hats/SixHats'
-import Navbar from '../bars/Navbar'
+
+
 
 
 function Home(props) {

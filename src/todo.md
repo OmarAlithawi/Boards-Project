@@ -7,6 +7,8 @@
 - A boolean flag for completed or not 
 - An assignee 
 - Anything else that you decide 
+- sort by
+- toggle dispaly
 
 ## Functional Requirements
 
@@ -30,7 +32,12 @@
   - Changing the button from addboard to the plus btn ---- **DONE**
   - Center the board ---- **DONE**
   - board name ---- **DONE**
-  - Render onload 
-  - delete or edit btn 
+  - Render when we refresh  
+  - delete **DONE** 
+  - or edit btn 
   - tasks completed 
   - btn to edit board name
+
+   ## QUESTIONS
+   - inside change.type === removed the state is empty  ?
+   - when we use redux we need to double click to delete ?
