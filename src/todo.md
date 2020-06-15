@@ -34,10 +34,11 @@
   - board name ---- **DONE**
   - Render when we refresh  
   - delete **DONE** 
-  - or edit btn 
+  - or edit btn **ALMOST**
   - tasks completed 
   - btn to edit board name
 
    ## QUESTIONS
    - inside change.type === removed the state is empty  ?
    - when we use redux we need to double click to delete ?
+   - when we pass true we get undifiend but if we pass false we get false ?

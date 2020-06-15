@@ -84,3 +84,9 @@ li{
     left: 50%;
     transform: translate(-50% ,-60%);
 } 
+
+.toggleBtn {
+  position: absolute;
+  top: 70px;
+  right: 100px;
+}

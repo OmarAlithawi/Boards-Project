@@ -4,11 +4,16 @@ import  '../../App.css'
 import HatItems from './HatItems'
 import {useSelector , useDispatch} from 'react-redux';
 import {allItemsIdsAction} from '../../actions'
+import { Grid , InputLabel , Select , MenuItem , makeStyles , FormControl , Box , List ,ListItem , Collapse ,ListItemIcon } from '@material-ui/core'
+import useStyles from './StyleHats'
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+
 
 export default function Hat(props) {
 
   const dispatch = useDispatch();
 
+  const classes = useStyles();
   
   const listItemId = useSelector(state => state.listItemIdReducer);
   const itemsIDs = useSelector(state => state.allItemsIdsReducer);
@@ -24,9 +29,12 @@ export default function Hat(props) {
         let changes = snapshot.docChanges();
         changes.forEach(change =>{
           const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
+          console.log(change)
             if(change.type === "added" && objectNotEmpty){ 
               setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]); 
               dispatch(allItemsIdsAction(change.doc.id));
+            }else if (change.type === "modified" && objectNotEmpty){
+              setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]); 
             }
         })
       }) 
@@ -50,12 +58,20 @@ export default function Hat(props) {
   const deleteItem =  (e) =>{
     e.preventDefault()
     e.persist()
-    let collectionName = e.target.parentNode.parentNode.getAttribute("name");
-    let documentId = e.target.parentNode.getAttribute("doc-id");
+    console.log(e.target)
+    const collectionName = e.target.parentNode.parentNode.getAttribute("name");
+    const documentId = e.target.parentNode.getAttribute("doc-id");
     console.log(documentId)
      db.collection("container").doc(currentBoardId).collection(collectionName).doc(documentId).delete();
      filteringListItems(documentId);
     
+  }
+
+  const sendUpdateValue = (e , itemId ,inputValue) => {
+    e.preventDefault()
+    e.persist()
+    db.collection("container").doc(currentBoardId).collection(props.collectionName).doc(itemId).update({ todo: inputValue });
+    filteringListItems(itemId);
   }
 
 
@@ -64,25 +80,39 @@ export default function Hat(props) {
     e.persist();
     const inputValue = e.target[0].value;
     const collectionName = e.target[0].name;
-   
     await db.collection('container').doc(props.boardID).collection(props.collectionName).add({
       todo:inputValue,
     });
    e.target.reset();
   }
 
+  const CollapseList = () => {
+    return(
+      <Collapse in={props.open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding >
+                        <ListItem button className={classes.nested}>
+                          {<HatItems sendUpdateValue ={sendUpdateValue} open ={props.open} deleteItem = {deleteItem}  name ={props.collectionName} data = {hatItemsData}  />}
+                        </ListItem> 
+                        </List>
+                    </Collapse>
+    )
+  }
 
+  const boardItemsRender = () => {
+    return <div><HatItems sendUpdateValue ={sendUpdateValue}  open ={props.open} deleteItem = {deleteItem}  name ={props.collectionName} data = {hatItemsData}  /></div>
+  }
+  console.log(props.open)
     return (
         <div className = "column" >
+          
             <form onSubmit = {(e) => postData(e)} >
                 <input type="text"  name = {props.collectionName}  placeholder = {props.collectionName}/>
                 <button onKeyDown= {(e) => e.key === 'Enter' && postData(e)}>Add item</button>
             </form>
-          <div>{<HatItems deleteItem = {deleteItem}  name ={props.collectionName} data = {hatItemsData}  />}</div>
+              {props.isBoard === undefined ? boardItemsRender() : CollapseList() }          
         </div>
     )
 }
      
-   
 
  
