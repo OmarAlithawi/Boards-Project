@@ -3,7 +3,7 @@
 ## Date Requirements
 
 - A due date 
-- A title 
+- A title  edit 
 - A boolean flag for completed or not 
 - An assignee 
 - Anything else that you decide 

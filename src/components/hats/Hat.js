@@ -34,7 +34,7 @@ export default function Hat(props) {
               setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]); 
               dispatch(allItemsIdsAction(change.doc.id));
             }else if (change.type === "modified" && objectNotEmpty){
-              setHatItemsData(hatItemsData => [...hatItemsData ,change.doc]); 
+              setHatItemsData(hatItemsData => [change.doc ,...hatItemsData]); 
             }
         })
       }) 
