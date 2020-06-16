@@ -9,7 +9,6 @@ import useStyles from './StyleBars'
 import {db} from '../auth/firebase';
 import {currentBoardIDAction , collectionNameAction , boardsIDsAction , boardNameAction} from '../../actions';
 import {useDispatch} from 'react-redux';
-import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
 
@@ -88,6 +87,9 @@ export default function Sidebar(){
       </div>
     );
 }
+
+
+
 
 /**
    const input = e.target.parentNode.firstChild.value

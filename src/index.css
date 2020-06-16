@@ -90,3 +90,8 @@ li{
   top: 70px;
   right: 100px;
 }
+
+.fadeOut{
+  opacity: 0;
+  transition: .9s all ease;
+}

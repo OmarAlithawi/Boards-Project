@@ -29,16 +29,32 @@
  - Allow users to rearrange the board via drag and drop (and persist the order in the backend!). Take a look at the react-dnd library.
 
  ## today 
-  - Changing the button from addboard to the plus btn ---- **DONE**
-  - Center the board ---- **DONE**
-  - board name ---- **DONE**
   - Render when we refresh  
-  - delete **DONE** 
-  - or edit btn **ALMOST**
   - tasks completed 
   - btn to edit board name
+  - delete the whole board
+  - onEdit the checked item will disappear 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    ## QUESTIONS
    - inside change.type === removed the state is empty  ?
    - when we use redux we need to double click to delete ?
    - when we pass true we get undifiend but if we pass false we get false ?
+   - edit and replace an item ?
+   - how to get the data when we referesh .
+   - what else / 
