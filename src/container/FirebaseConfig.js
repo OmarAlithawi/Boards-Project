@@ -1,4 +1,3 @@
-
 /*
 import * as firebase from 'firebase';
 import 'firebase/firestore';
@@ -20,7 +19,7 @@ import 'firebase/database';
   export default dbs;
   */
 
-  /*
+/*
   elifs firebase 
 
   const firebaseConfig = {
