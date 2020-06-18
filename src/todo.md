@@ -30,31 +30,18 @@
 
  ## today 
   - Render when we refresh  
-  - tasks completed 
-  - btn to edit board name
+  - btn to edit the board name
   - delete the whole board
-  - onEdit the checked item will disappear 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - (sort by latest updated) we should have two arrays inside the liveUpdated (sorted , not sorted);
 
    ## QUESTIONS
-   - inside change.type === removed the state is empty  ?
-   - when we use redux we need to double click to delete ?
-   - when we pass true we get undifiend but if we pass false we get false ?
-   - edit and replace an item ?
-   - how to get the data when we referesh .
-   - what else / 
+   - how to get the data when we referesh ?
+     - when the collectionsNames and the currentBoardId 
+   - check multiple items ?
+   - what else ? 
+
+
+
+
+
+

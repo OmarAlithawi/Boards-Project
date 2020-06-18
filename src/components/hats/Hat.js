@@ -4,10 +4,11 @@ import  '../../App.css'
 import HatItems from './HatItems'
 import {useSelector , useDispatch} from 'react-redux';
 import {allItemsIdsAction} from '../../actions'
-import { List ,ListItem , Collapse  } from '@material-ui/core'
 import useStyles from './StyleHats'
-import { boardNameAction } from '../../actions'
-
+import { boardNameAction , currentBoardIDAction } from '../../actions'
+import { Grid , InputLabel , Select , MenuItem , makeStyles , FormControl , Box , List ,ListItem ,Collapse } from '@material-ui/core'
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 export default function Hat(props) {
 
@@ -17,8 +18,9 @@ export default function Hat(props) {
   const collectionsNames = useSelector(state => state.collectionNameReducer);
   const [hatItemsData , setHatItemsData] = useState([]);
   const currentBoardId = useSelector(state => state.currentBoardIDReducer);
+  const [isOpen, setIsOpen] = useState(true);
   
-  
+
 // to retrieve the data immediately
 
   const liveUpdateData = async () =>{
@@ -43,8 +45,6 @@ export default function Hat(props) {
                 result[indexToReplace] = change.doc;
                 // If your update function returns the exact same value as the current state,
                 // the subsequent rerender will be skipped completely.
-
-
                 // delete
                 hatItemsData[indexToReplace] = change.doc;
                 return result;
@@ -56,19 +56,44 @@ export default function Hat(props) {
     }
   }
 
+  
+  
+  const getLatestBoardId = async () => {
+
+    await db.collection('container').onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      changes.forEach((change , index) =>{
+        if(index === changes.length -1 ){ 
+         dispatch(currentBoardIDAction(change.doc.id));
+        }
+      })
+    })
+
+  }
+  
+  
   useEffect(() => {
     liveUpdateData();
-    setHatItemsData([]);
   }, [props.boardID ])
 
+  /*
+  useEffect(() => {
+    getLatestBoardId();
+  }, [])
+*/
+  console.log(hatItemsData);
 
 // to filter the array of data
+
+const expandOrNot = () => {
+  setIsOpen(!isOpen);
+};
 
   const deleteListItemFromState = (id) => {
     const filteredObjectsData = hatItemsData.filter(doc => {
       return doc.id !== id ;
     })
-    setHatItemsData(filteredObjectsData);
+    setHatItemsData((hatItemsData) => filteredObjectsData);
 }
 
 // delete item 
@@ -111,13 +136,20 @@ export default function Hat(props) {
 
   const displayItemsAsList = () => {
     return(
-      <Collapse in={props.isOpen} timeout="auto" unmountOnExit>
+      <List component="nav" aria-labelledby="nested-list-subheader" className={classes.root}> 
+      <InputLabel id ="label">{props.collectionName}</InputLabel>
+      <ListItem button onClick={expandOrNot} >
+          {isOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+   
+      <Collapse in={isOpen} timeout="auto" unmountOnExit>
          <List component="div" disablePadding >
             <ListItem button className={classes.nested}>
-              {<HatItems updateItem ={updateItem} isOpen ={props.isOpen} deleteItem = {deleteItem}  name ={props.collectionName} data = {hatItemsData}  />}
+              {<HatItems updateItem ={updateItem}  deleteItem = {deleteItem}  name ={props.collectionName} data = {hatItemsData}  />}
             </ListItem> 
           </List>
       </Collapse>
+      </List>
     )
   }
 

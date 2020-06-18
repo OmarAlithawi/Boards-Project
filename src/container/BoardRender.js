@@ -15,7 +15,6 @@ export default function BoardRender() {
         <div>
             <Sidebar />
             <main className={classes.boards}>
-                
             <Typography className = "heading" component="h1" variant="h5" >
                  {  boardName  }
             </Typography>
@@ -24,6 +23,7 @@ export default function BoardRender() {
         </div>
     )
 }
+
 
 /*
 <button onClick = {editingOrEdit}>edit</button>
