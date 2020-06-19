@@ -29,6 +29,8 @@ export default function Hat(props) {
   const [hatItemsData, setHatItemsData] = useState([]);
   const currentBoardId = useSelector((state) => state.currentBoardIDReducer);
   const [isOpen, setIsOpen] = useState(true);
+  const [sortedHatItemsData, setSortedHatItemsData] = useState([]);
+  const [isSorted, setIsSorted] = useState(false);
 
   // to retrieve the data immediately
 
@@ -44,8 +46,16 @@ export default function Hat(props) {
             const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
             if (change.type === "added" && objectNotEmpty) {
               setHatItemsData((hatItemsData) => [...hatItemsData, change.doc]);
+              setSortedHatItemsData((sortedHatItemsData) => [
+                ...sortedHatItemsData,
+                change.doc,
+              ]);
               dispatch(allItemsIdsAction(change.doc.id));
             } else if (change.type === "modified" && objectNotEmpty) {
+              setSortedHatItemsData((sortedHatItemsData) => [
+                change.doc,
+                ...sortedHatItemsData,
+              ]);
               setHatItemsData((hatItemsData) => {
                 // Internally, it tracks hatItemsData as "somearray0". Even if you change
                 // the contents of the array, it's still "somearray0" that's returned.
@@ -70,43 +80,34 @@ export default function Hat(props) {
     }
   };
 
-
   const expandOrNot = () => {
     setIsOpen(!isOpen);
   };
 
-  /*
+  console.log(sortedHatItemsData.map((doc) => doc.data()));
 
-  const getLatestBoardId = async () => {
-    await db.collection("container").onSnapshot((snapshot) => {
-      let changes = snapshot.docChanges();
-      changes.forEach((change, index) => {
-        if (index === changes.length - 1) {
-          dispatch(currentBoardIDAction(change.doc.id));
-        }
-      });
-    });
-  };
-*/
+
   useEffect(() => {
     liveUpdateData();
+    setHatItemsData([]);
   }, [props.boardID]);
 
-  /*
-  useEffect(() => {
-    getLatestBoardId();
-  }, [])
-*/
-  console.log(hatItemsData);
 
   // to filter the array of data
 
-  
   const deleteListItemFromState = (id) => {
     const filteredObjectsData = hatItemsData.filter((doc) => {
       return doc.id !== id;
     });
     setHatItemsData((hatItemsData) => filteredObjectsData);
+  };
+
+  const deleteListItemFromSortedState = (id) => {
+    const filteredObjectsData = hatItemsData.filter((doc) => {
+      return doc.id !== id;
+    });
+   
+    setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
   };
 
   // delete item
@@ -122,6 +123,7 @@ export default function Hat(props) {
       .doc(listItemId)
       .delete();
     deleteListItemFromState(listItemId);
+    deleteListItemFromSortedState(listItemId);
   };
 
   // update item
@@ -134,6 +136,7 @@ export default function Hat(props) {
       .collection(props.collectionName)
       .doc(listItemId)
       .update({ todo: inputValue });
+    deleteListItemFromSortedState(listItemId);
   };
 
   // add item
@@ -190,19 +193,34 @@ export default function Hat(props) {
   const displayItemsAsBoard = () => {
     return (
       <div>
-        <HatItems
-          updateItem={updateItem}
-          open={props.open}
-          deleteItem={deleteItem}
-          name={props.collectionName}
-          data={hatItemsData}
-        />
+        {!isSorted ? (
+          <HatItems
+            updateItem={updateItem}
+            open={props.open}
+            deleteItem={deleteItem}
+            name={props.collectionName}
+            data={hatItemsData}
+          />
+        ) : (
+          <HatItems
+            updateItem={updateItem}
+            open={props.open}
+            deleteItem={deleteItem}
+            name={props.collectionName}
+            data={sortedHatItemsData}
+          />
+        )}
       </div>
     );
   };
 
+  console.log(isSorted);
   return (
     <div className="column">
+      <select onChange={() => setIsSorted(!isSorted)}>
+        <option>no sorting</option>
+        <option>Latest update</option>
+      </select>
       <form onSubmit={(e) => postData(e)}>
         <input
           type="text"

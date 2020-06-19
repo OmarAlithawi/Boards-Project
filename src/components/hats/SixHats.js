@@ -29,7 +29,7 @@ export default function SixHats() {
     // const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
     return collectionsName.map((collection, index) => {
       return (
-        <Grid container>
+        <Grid container key ={index} >
           <Grid container item xs={12} spacing={2}>
             {
               <Hat

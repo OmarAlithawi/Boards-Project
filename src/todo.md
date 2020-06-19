@@ -30,13 +30,12 @@
 
  ## today 
   - Render when we refresh  
-  - btn to edit the board name
-  - delete the whole board
+  - btn to edit the board name 
   - (sort by latest updated) we should have two arrays inside the liveUpdated (sorted , not sorted);
 
    ## QUESTIONS
    - how to get the data when we referesh ?
-     - when the collectionsNames and the currentBoardId 
+     - when the collectionsNames and the       currentBoardId 
    - check multiple items ?
    - what else ? 
 

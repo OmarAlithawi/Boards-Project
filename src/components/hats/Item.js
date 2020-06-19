@@ -41,12 +41,18 @@ export default function Item(props) {
         className="checkBox"
         onClick={(e) => {
           e.persist();
-          setTimeout(() => {
-            e.target.parentNode.classList.add("fadeOut");
-          }, 3000);
-          setTimeout(() => {
-            props.deleteItem(e);
-          }, 3900);
+          if (e.target.checked) {
+            setTimeout(() => {
+              if (e.target.checked) {
+                e.target.parentNode.classList.add("fadeOut");
+              }
+            }, 3000);
+            setTimeout(() => {
+              if (e.target.checked) {
+                props.deleteItem(e);
+              }
+            }, 3900);
+          }
         }}
       />
       {!isEditItem && <li>{props.doc.data().todo}</li>}
