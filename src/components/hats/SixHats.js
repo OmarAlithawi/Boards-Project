@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Hat from "./Hat";
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import ViewWeekIcon from '@material-ui/icons/ViewWeek';
+import { db } from "../auth/firebase";
+
 import {
   Grid,
 } from "@material-ui/core";
 
+import { useSelector, useDispatch } from "react-redux";
 
 import useStyles from "./StyleHats";
-import { useSelector } from "react-redux";
+import { boardNameAction, currentBoardIDAction , boardsIDsAction, boardsNamesAction  } from "../../actions";
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek'
+
+
 
 export default function SixHats() {
   const currentBoardId = useSelector((state) => state.currentBoardIDReducer);
@@ -16,12 +23,24 @@ export default function SixHats() {
   const [isBoard, setIsBoard] = useState(true);
 
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   // render the data as a board
+ 
+  const getBoardName = async () => {
+    if(currentBoardId.length > 0){ 
+   const name =  await db.collection("container").doc(currentBoardId).get();
+   dispatch(boardNameAction(name.data().projectName));
+    }
+  }
+
+  useEffect(() => {
+    getBoardName()
+  } , [currentBoardId])
 
   const renderHatsBoard = () => {
-    // const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-    return collectionsName.map((collection, index) => {
+     const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+     if(currentBoardId.length > 0){ 
+    return collectionsNames.map((collection, index) => {
       return (
         <Grid container key ={index} >
           <Grid container item xs={12} spacing={2}>
@@ -37,12 +56,15 @@ export default function SixHats() {
         </Grid>
       );
     });
+  }
   };
 
   // render the data as a list
 
   const renderHatsList = () => {
-    return collectionsName.map((collection, index) => {
+    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+    if(currentBoardId.length > 0){ 
+    return collectionsNames.map((collection, index) => {
       return (
         <Hat
           isBoard={isBoard}
@@ -52,10 +74,14 @@ export default function SixHats() {
         />
       );
     });
+  }
   };
+
+
 
   return (
     <div>
+
       <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
         {" "}
         {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}
@@ -65,6 +91,7 @@ export default function SixHats() {
       ) : (
         renderHatsList()
       )}
-    </div>
+
+  </div>
   );
 }

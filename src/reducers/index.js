@@ -20,6 +20,8 @@ const boardsIDsReducer = (state = [], action) => {
   switch (action.type) {
     case "BOARDS_IDS":
       return [...state, action.payload];
+    case "DELETE_BOARD_IDS" :
+      return state.filter(id => id !== action.payload);
     default:
       return state;
   }
@@ -52,6 +54,17 @@ const boardNameReducer = (state = [], action) => {
   }
 };
 
+const boardsNamesReducer = (state = [], action) => {
+  switch (action.type) {
+    case "BOARDS_NAMES":
+      return [...state, action.payload];
+    case "DELETE_BOARD_NAME":
+      return state.filter(name => name !== action.payload);
+    default:
+      return state;
+  }
+};
+
 const allReducers = combineReducers({
   currentBoardIDReducer,
   collectionNameReducer,
@@ -59,6 +72,7 @@ const allReducers = combineReducers({
   allItemsIdsReducer,
   listItemIdReducer,
   boardNameReducer,
+  boardsNamesReducer
 });
 
 export default allReducers;

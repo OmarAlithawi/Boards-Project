@@ -5,7 +5,7 @@ import HatItems from "./HatItems";
 import { useSelector, useDispatch } from "react-redux";
 import { allItemsIdsAction } from "../../actions";
 import useStyles from "./StyleHats";
-import { boardNameAction, currentBoardIDAction } from "../../actions";
+import { boardNameAction, currentBoardIDAction , boardsIDsAction } from "../../actions";
 import {
   Grid,
   InputLabel,
@@ -19,6 +19,7 @@ import {
   ListItem,
   Collapse,
   Paper
+
 } from "@material-ui/core";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
@@ -66,16 +67,10 @@ export default function Hat(props) {
             const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
             if (change.type === "added" && objectNotEmpty) {
               setHatItemsData((hatItemsData) => [...hatItemsData, change.doc]);
-              setSortedHatItemsData((sortedHatItemsData) => [
-                ...sortedHatItemsData,
-                change.doc,
-              ]);
               dispatch(allItemsIdsAction(change.doc.id));
+
+              
             } else if (change.type === "modified" && objectNotEmpty) {
-              setSortedHatItemsData((sortedHatItemsData) => [
-                change.doc,
-                ...sortedHatItemsData,
-              ]);
               setHatItemsData((hatItemsData) => {
                 // Internally, it tracks hatItemsData as "somearray0". Even if you change
                 // the contents of the array, it's still "somearray0" that's returned.
@@ -100,18 +95,20 @@ export default function Hat(props) {
     }
   };
 
+  
+
   const expandOrNot = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(sortedHatItemsData.map((doc) => doc.data()));
-
+ 
 
   useEffect(() => {
     liveUpdateData();
     setHatItemsData([]);
   }, [props.boardID]);
 
+ 
 
   // to filter the array of data
 
@@ -120,15 +117,19 @@ export default function Hat(props) {
       return doc.id !== id;
     });
     setHatItemsData((hatItemsData) => filteredObjectsData);
+    setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
+
   };
 
+  /*
   const deleteListItemFromSortedState = (id) => {
     const filteredObjectsData = hatItemsData.filter((doc) => {
       return doc.id !== id;
     });
-   
+    setHatItemsData((hatItemsData) => filteredObjectsData);
     setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
   };
+  */
 
   // delete item
 
@@ -143,7 +144,7 @@ export default function Hat(props) {
       .doc(listItemId)
       .delete();
     deleteListItemFromState(listItemId);
-    deleteListItemFromSortedState(listItemId);
+    
   };
 
   // update item
@@ -156,7 +157,7 @@ export default function Hat(props) {
       .collection(props.collectionName)
       .doc(listItemId)
       .update({ todo: inputValue });
-    deleteListItemFromSortedState(listItemId);
+   
   };
 
   // add item
@@ -213,7 +214,7 @@ export default function Hat(props) {
   const displayItemsAsBoard = () => {
     return (
       <div>
-        {!isSorted ? (
+        { 
           <HatItems
             updateItem={updateItem}
             open={props.open}
@@ -222,49 +223,39 @@ export default function Hat(props) {
             data={hatItemsData}
             className="notSortedHatItems"
           />
-        ) : (
-          <HatItems
-            updateItem={updateItem}
-            open={props.open}
-            deleteItem={deleteItem}
-            name={props.collectionName}
-            data={sortedHatItemsData}
-          />
-        )}
+       }
       </div>
     );
   };
 
-  console.log(isSorted);
+  
   return (
     <div className="column">
-      <ThemeProvider theme={theme}>
-        <div className="flag-container">
-          <div id="flag"> Thinking Hats </div>
-        </div>
-      <Paper className={classes.Paper} elevation={2}>
-      <form className="addItemForm" onSubmit={(e) => postData(e)}>
-        <TextField 
-        id="outlined-basic"
-        className={classes.inputOutline}
-        type="text"
-        name={props.collectionName}
-        placeholder={props.collectionName}
-        label= {props.collectionName}
-        variant="outlined"
-        autoComplete="off" />
-        <button onKeyDown={(e) => e.key === "Enter" && postData(e)} className="addItemBtn">
-          +
-        </button>
-      </form>
-        <select className="selectSortingDropdown" onChange={() => setIsSorted(!isSorted)}>
-          <option>Sort By</option>
-          <option>Latest update</option>
-        </select>
 
-        {props.isBoard ? displayItemsAsBoard() : displayItemsAsList()}
-      </Paper>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="flag-container">
+        <div id="flag"> Thinking Hats </div>
+      </div>
+    <Paper className={classes.Paper} elevation={2}>
+    <form className="addItemForm" onSubmit={(e) => postData(e)}>
+      <TextField 
+      id="outlined-basic"
+      className={classes.inputOutline}
+      type="text"
+      name={props.collectionName}
+      placeholder={props.collectionName}
+      label= {props.collectionName}
+      variant="outlined"
+      autoComplete="off" />
+      <button onKeyDown={(e) => e.key === "Enter" && postData(e)} className="addItemBtn">
+        +
+      </button>
+    </form>
+      <div>
+      {props.isBoard ? displayItemsAsBoard() : displayItemsAsList()}
+      </div>
+    </Paper>
+    </ThemeProvider>
+  </div>
   );
 }

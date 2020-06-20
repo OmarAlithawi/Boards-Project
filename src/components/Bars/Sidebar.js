@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SidebarItems from './SidebarItems'
 import {
   Drawer,
   Toolbar,
@@ -22,15 +23,21 @@ import {
   collectionNameAction,
   boardsIDsAction,
   boardNameAction,
+  boardsNamesAction
 } from "../../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 
 export default function Sidebar() {
   const dispatch = useDispatch();
   const [hatsName, setHatsName] = useState("");
-
+  const [boardNameArray, setBoradNameArray] = useState([]);
+  //const [boardsNames, setBoradsNames] = useState([]);
+  const allBoardsIds = useSelector((state) => state.boardsIDsReducer);
+  const boardName = useSelector((state) => state.boardNameReducer);
+  const currentBoardId = useSelector((state) => state.currentBoardIDReducer);
+  const boardsNames = useSelector((state) => state.boardsNamesReducer);
   const history = useHistory();
 
   function changeRouteBoard() {
@@ -62,8 +69,11 @@ export default function Sidebar() {
     });
     dispatch(currentBoardIDAction(createBoard.id));
     dispatch(collectionNameAction(collectionsNames));
-    dispatch(boardsIDsAction(createBoard.id));
+    //dispatch(boardsIDsAction(createBoard.id))
+   // setBoradsNames(boardsNames =>  [hatsName , ...boardsNames])
   };
+
+ 
 
   const classes = useStyles();
   return (
@@ -98,12 +108,15 @@ export default function Sidebar() {
           <TextField
             className={classes.textField}
             name={hatsName}
-            onChange={(e) => setHatsName(e.target.value)}
+            onChange={(e) => 
+              {e.persist()
+              setHatsName(e.target.value) 
+              setBoradNameArray([e.target.value]);
+            }}
           />
           <AddIcon
             onClick={(e) => {
               createBoards();
-              dispatch(boardNameAction(hatsName));
               changeRouteBoard();
             }}
             className={classes.plusButtonInside}
@@ -111,60 +124,17 @@ export default function Sidebar() {
         </IconButton>
 
         {/* Here will be the created project names/lists  by user  */}
+        
+        {console.log(boardsNames)}
+
         <List>
-          {["React Project", "JavaScript", "TypeScript As..."].map((text) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {" "}
-                <LabelImportantIcon className={classes.icons} />{" "}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {boardsNames.map((boardName , index) => (
+            <SidebarItems  boardId = {currentBoardId} allBoardsIds = {allBoardsIds} index = {index} boardName = {boardName} />
           ))}
         </List>
       </Drawer>
+      
     </div>
   );
 }
 
-/**
-   const input = e.target.parentNode.firstChild.value
-              console.log(input);
- */
-
-/*
-  
-  const createBoards = async() =>{
-  
-    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-    const createBoard = await db.collection('container').add({
-      projectName : hatsName
-    });
-    collectionsNames.forEach( async(collection) => {
-    const createCollections = await db.collection('container').doc(createBoard.id).collection(collection).add({});
-  })
-  dispatch(currentBoardIDAction(createBoard.id));
-  dispatch(collectionNameAction(collectionsNames));
-  dispatch(boardsIDsAction(createBoard.id));
-  
-  }
-
-
-  const createBoards = async() =>{
-  
-    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
-    const createBoard = await db.collection('container').add({
-      'black-hat': {},
-      'white-hat': {},
-      'blue-hat':{},
-      'red-hat':{},
-      'green-hat':{},
-      'yellow-hat':{}
-    });
-    
-  dispatch(currentBoardIDAction(createBoard.id));
-  dispatch(collectionNameAction(collectionsNames));
-  dispatch(boardsIDsAction(createBoard.id));
-  
-  }
- */
