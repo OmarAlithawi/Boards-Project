@@ -56,7 +56,7 @@ export const deleteBoardNameAction = (data) => {
 
 export const boardsNamesAction = (data) => {
   return {
-    type: "BOARD_NAME",
+    type: "BOARDS_NAMES",
     payload: data,
   };
 };

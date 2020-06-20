@@ -18,7 +18,7 @@ import {
   import { useHistory } from "react-router-dom";
   import { db } from "../auth/firebase";
 
-  
+
 export default function Item(props) {
     const classes = useStyles();
   const history = useHistory();
@@ -44,7 +44,7 @@ export default function Item(props) {
 
     const sideBarItem = () =>{
         return(
-            <div id={boardId} itemName={props.boardName}>
+            <div id={boardId} >
             <ListItem button  >
               <ListItemIcon>
                 {" "}

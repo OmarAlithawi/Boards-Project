@@ -19,13 +19,16 @@ export default function BoardRender() {
           changes.forEach((change) => {
             const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
             if (change.type === "added" && objectNotEmpty) {
-              console.log(change.doc);
-              dispatch(boardsIDsAction(change.doc.id));
+              console.log(change.doc.data().projectName);
               dispatch(boardsNamesAction(change.doc.data().projectName))
+              dispatch(boardsIDsAction(change.doc.id));
+              
             }
           })
         })
   }
+
+  
 
   useEffect(() =>{
     console.log("use effect is working")

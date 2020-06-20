@@ -125,6 +125,7 @@ export default function Sidebar() {
 
         {/* Here will be the created project names/lists  by user  */}
         
+        {console.log(boardsNames)}
 
         <List>
           {boardsNames.map((boardName , index) => (

@@ -56,8 +56,8 @@ const boardNameReducer = (state = [], action) => {
 
 const boardsNamesReducer = (state = [], action) => {
   switch (action.type) {
-    case "BOARD_NAME":
-      return [...state ,action.payload];
+    case "BOARDS_NAMES":
+      return [...state, action.payload];
     case "DELETE_BOARD_NAME":
       return state.filter(name => name !== action.payload);
     default:
