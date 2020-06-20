@@ -14,12 +14,32 @@ import {
   makeStyles,
   FormControl,
   Box,
+  TextField,
   List,
   ListItem,
   Collapse,
+  Paper
 } from "@material-ui/core";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#fff',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#fff',
+      contrastText: '#fff',
+    },
+  },
+});
 
 export default function Hat(props) {
   const dispatch = useDispatch();
@@ -200,6 +220,7 @@ export default function Hat(props) {
             deleteItem={deleteItem}
             name={props.collectionName}
             data={hatItemsData}
+            className="notSortedHatItems"
           />
         ) : (
           <HatItems
@@ -217,21 +238,33 @@ export default function Hat(props) {
   console.log(isSorted);
   return (
     <div className="column">
-      <select onChange={() => setIsSorted(!isSorted)}>
-        <option>no sorting</option>
-        <option>Latest update</option>
-      </select>
-      <form onSubmit={(e) => postData(e)}>
-        <input
-          type="text"
-          name={props.collectionName}
-          placeholder={props.collectionName}
-        />
-        <button onKeyDown={(e) => e.key === "Enter" && postData(e)}>
-          Add item
+      <ThemeProvider theme={theme}>
+        <div className="flag-container">
+          <div id="flag"> Thinking Hats </div>
+        </div>
+      <Paper className={classes.Paper} elevation={2}>
+      <form className="addItemForm" onSubmit={(e) => postData(e)}>
+        <TextField 
+        id="outlined-basic"
+        className={classes.inputOutline}
+        type="text"
+        name={props.collectionName}
+        placeholder={props.collectionName}
+        label= {props.collectionName}
+        variant="outlined"
+        autoComplete="off" />
+        <button onKeyDown={(e) => e.key === "Enter" && postData(e)} className="addItemBtn">
+          +
         </button>
       </form>
-      {props.isBoard ? displayItemsAsBoard() : displayItemsAsList()}
+        <select className="selectSortingDropdown" onChange={() => setIsSorted(!isSorted)}>
+          <option>Sort By</option>
+          <option>Latest update</option>
+        </select>
+
+        {props.isBoard ? displayItemsAsBoard() : displayItemsAsList()}
+      </Paper>
+      </ThemeProvider>
     </div>
   );
 }

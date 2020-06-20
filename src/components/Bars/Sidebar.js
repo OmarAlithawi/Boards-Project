@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import GradeRoundedIcon from "@material-ui/icons/GradeRounded";
-import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
+import AddIcon from '@material-ui/icons/Add';
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 import Appbar from "./Appbar";
 import useStyles from "./StyleBars";
@@ -25,6 +25,7 @@ import {
 } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 
 export default function Sidebar() {
   const dispatch = useDispatch();
@@ -99,7 +100,7 @@ export default function Sidebar() {
             name={hatsName}
             onChange={(e) => setHatsName(e.target.value)}
           />
-          <AddCircleRoundedIcon
+          <AddIcon
             onClick={(e) => {
               createBoards();
               dispatch(boardNameAction(hatsName));

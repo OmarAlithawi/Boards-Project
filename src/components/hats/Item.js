@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { listItemIdAction } from "../../actions";
 
+
 export default function Item(props) {
   const dispatch = useDispatch();
   const [isEditItem, setIsEditItem] = useState(false);
@@ -57,15 +58,17 @@ export default function Item(props) {
       />
       {!isEditItem && <li>{props.doc.data().todo}</li>}
       {isEditItem && editForm(props.doc.id)}
-      <button
+      <img src="https://image.flaticon.com/icons/svg/3090/3090407.svg" 
         onClick={(e) => {
           dispatch(listItemIdAction(props.doc.id));
           props.deleteItem(e);
         }}
-      >
-        del
-      </button>
-      <button onClick={() => setIsEditItem(!isEditItem)}>edit</button>
+       className="trashImg" />
+
+      <img src="https://image.flaticon.com/icons/png/512/660/660756.png"
+        onClick={() => setIsEditItem(!isEditItem)}
+      className="editImg" />
+      
     </div>
   );
 }

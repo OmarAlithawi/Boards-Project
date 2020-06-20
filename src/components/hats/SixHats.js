@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Hat from "./Hat";
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import {
   Grid,
   InputLabel,
@@ -12,6 +14,7 @@ import {
   ListItem,
   Collapse,
 } from "@material-ui/core";
+
 
 import useStyles from "./StyleHats";
 import { useSelector } from "react-redux";
@@ -64,7 +67,7 @@ export default function SixHats() {
     <div>
       <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
         {" "}
-        {isBoard ? <button>List</button> : <button>Board</button>}{" "}
+        {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}
       </div>
       {isBoard ? (
         <div className="board">{renderHatsBoard()}</div>
