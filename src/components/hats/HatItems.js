@@ -7,7 +7,7 @@ export default function HatItems(props) {
       {props.data.map((doc, index) => {
         return (
           <Item
-            key={doc.id}
+            key={index}
             id={props.id}
             doc={doc}
             updateItem={props.updateItem}

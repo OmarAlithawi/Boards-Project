@@ -52,6 +52,15 @@ const boardNameReducer = (state = [], action) => {
   }
 };
 
+const boardsNamesReducer = (state = [], action) => {
+  switch (action.type) {
+    case "BOARD_NAME":
+      return [...state ,action.payload];
+    default:
+      return state;
+  }
+};
+
 const allReducers = combineReducers({
   currentBoardIDReducer,
   collectionNameReducer,
@@ -59,6 +68,7 @@ const allReducers = combineReducers({
   allItemsIdsReducer,
   listItemIdReducer,
   boardNameReducer,
+  boardsNamesReducer
 });
 
 export default allReducers;

@@ -5,7 +5,7 @@ import HatItems from "./HatItems";
 import { useSelector, useDispatch } from "react-redux";
 import { allItemsIdsAction } from "../../actions";
 import useStyles from "./StyleHats";
-import { boardNameAction, currentBoardIDAction } from "../../actions";
+import { boardNameAction, currentBoardIDAction , boardsIDsAction } from "../../actions";
 import {
   Grid,
   InputLabel,
@@ -51,6 +51,7 @@ export default function Hat(props) {
                 change.doc,
               ]);
               dispatch(allItemsIdsAction(change.doc.id));
+
             } else if (change.type === "modified" && objectNotEmpty) {
               setSortedHatItemsData((sortedHatItemsData) => [
                 change.doc,
@@ -80,18 +81,20 @@ export default function Hat(props) {
     }
   };
 
+  
+
   const expandOrNot = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(sortedHatItemsData.map((doc) => doc.data()));
-
+ 
 
   useEffect(() => {
     liveUpdateData();
     setHatItemsData([]);
   }, [props.boardID]);
 
+ 
 
   // to filter the array of data
 
@@ -100,13 +103,15 @@ export default function Hat(props) {
       return doc.id !== id;
     });
     setHatItemsData((hatItemsData) => filteredObjectsData);
+    setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
+
   };
 
   const deleteListItemFromSortedState = (id) => {
     const filteredObjectsData = hatItemsData.filter((doc) => {
       return doc.id !== id;
     });
-   
+    setHatItemsData((hatItemsData) => filteredObjectsData);
     setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
   };
 
@@ -214,7 +219,6 @@ export default function Hat(props) {
     );
   };
 
-  console.log(isSorted);
   return (
     <div className="column">
       <select onChange={() => setIsSorted(!isSorted)}>

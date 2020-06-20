@@ -39,3 +39,10 @@ export const boardNameAction = (data) => {
     payload: data,
   };
 };
+
+export const boardsNamesAction = (data) => {
+  return {
+    type: "BOARD_NAME",
+    payload: data,
+  };
+};

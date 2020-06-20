@@ -1,12 +1,36 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Sidebar from "../components/bars/Sidebar";
 import SixHats from "../components/hats/SixHats";
-import { useSelector } from "react-redux";
 import useStyles from "../components/home/StyleHome";
 import { Typography } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { db } from "../components/auth/firebase";
+import { boardNameAction, currentBoardIDAction , boardsIDsAction, boardsNamesAction  } from "../actions";
 
 export default function BoardRender() {
   const boardName = useSelector((state) => state.boardNameReducer);
+
+  const dispatch = useDispatch();
+  const liveUpdataBoardsIds = async () =>{
+    await db
+        .collection("container")
+        .onSnapshot((snapshot) => {
+          let changes = snapshot.docChanges();
+          changes.forEach((change) => {
+            const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
+            if (change.type === "added" && objectNotEmpty) {
+              console.log("hi");
+              dispatch(boardsIDsAction(change.doc.id));
+              dispatch(boardsNamesAction(change.doc.data().projectName))
+            }
+          })
+        })
+  }
+
+  useEffect(() =>{
+    console.log("use effect is working")
+    liveUpdataBoardsIds();
+  }, [])
 
   const classes = useStyles();
   return (
