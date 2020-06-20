@@ -26,6 +26,10 @@ const theme = createMuiTheme({
 });
 
 function Home(props) {
+
+
+
+
   // Clock
   const [date, setDate] = useState(new Date());
 
