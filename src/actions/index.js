@@ -19,6 +19,13 @@ export const boardsIDsAction = (data) => {
   };
 };
 
+export const deleteBoardIDAction = (data) => {
+  return {
+    type: "DELETE_BOARD_IDS",
+    payload: data,
+  };
+};
+
 export const allItemsIdsAction = (data) => {
   return {
     type: "ITEMS_IDS",
@@ -36,6 +43,13 @@ export const listItemIdAction = (data) => {
 export const boardNameAction = (data) => {
   return {
     type: "BOARD_NAME",
+    payload: data,
+  };
+};
+
+export const deleteBoardNameAction = (data) => {
+  return {
+    type: "DELETE_BOARD_NAME",
     payload: data,
   };
 };

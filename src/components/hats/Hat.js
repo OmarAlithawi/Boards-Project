@@ -17,9 +17,29 @@ import {
   List,
   ListItem,
   Collapse,
+  Paper,
+  TextField
 } from "@material-ui/core";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#fff',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#fff',
+      contrastText: '#fff',
+    },
+  },
+});
 
 export default function Hat(props) {
   const dispatch = useDispatch();
@@ -46,17 +66,10 @@ export default function Hat(props) {
             const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
             if (change.type === "added" && objectNotEmpty) {
               setHatItemsData((hatItemsData) => [...hatItemsData, change.doc]);
-              setSortedHatItemsData((sortedHatItemsData) => [
-                ...sortedHatItemsData,
-                change.doc,
-              ]);
               dispatch(allItemsIdsAction(change.doc.id));
 
+              
             } else if (change.type === "modified" && objectNotEmpty) {
-              setSortedHatItemsData((sortedHatItemsData) => [
-                change.doc,
-                ...sortedHatItemsData,
-              ]);
               setHatItemsData((hatItemsData) => {
                 // Internally, it tracks hatItemsData as "somearray0". Even if you change
                 // the contents of the array, it's still "somearray0" that's returned.
@@ -107,6 +120,7 @@ export default function Hat(props) {
 
   };
 
+  /*
   const deleteListItemFromSortedState = (id) => {
     const filteredObjectsData = hatItemsData.filter((doc) => {
       return doc.id !== id;
@@ -114,6 +128,7 @@ export default function Hat(props) {
     setHatItemsData((hatItemsData) => filteredObjectsData);
     setSortedHatItemsData((sortedHatItemsData) => [...filteredObjectsData]);
   };
+  */
 
   // delete item
 
@@ -128,7 +143,7 @@ export default function Hat(props) {
       .doc(listItemId)
       .delete();
     deleteListItemFromState(listItemId);
-    deleteListItemFromSortedState(listItemId);
+    
   };
 
   // update item
@@ -141,7 +156,7 @@ export default function Hat(props) {
       .collection(props.collectionName)
       .doc(listItemId)
       .update({ todo: inputValue });
-    deleteListItemFromSortedState(listItemId);
+   
   };
 
   // add item
@@ -198,7 +213,7 @@ export default function Hat(props) {
   const displayItemsAsBoard = () => {
     return (
       <div>
-        {!isSorted ? (
+        { 
           <HatItems
             updateItem={updateItem}
             open={props.open}
@@ -206,36 +221,38 @@ export default function Hat(props) {
             name={props.collectionName}
             data={hatItemsData}
           />
-        ) : (
-          <HatItems
-            updateItem={updateItem}
-            open={props.open}
-            deleteItem={deleteItem}
-            name={props.collectionName}
-            data={sortedHatItemsData}
-          />
-        )}
+       }
       </div>
     );
   };
 
+  
   return (
     <div className="column">
-      <select onChange={() => setIsSorted(!isSorted)}>
-        <option>no sorting</option>
-        <option>Latest update</option>
-      </select>
-      <form onSubmit={(e) => postData(e)}>
-        <input
-          type="text"
-          name={props.collectionName}
-          placeholder={props.collectionName}
-        />
-        <button onKeyDown={(e) => e.key === "Enter" && postData(e)}>
-          Add item
-        </button>
-      </form>
+    <ThemeProvider theme={theme}>
+      <div className="flag-container">
+        <div id="flag"> Thinking Hats </div>
+      </div>
+    <Paper className={classes.Paper} elevation={2}>
+    <form className="addItemForm" onSubmit={(e) => postData(e)}>
+      <TextField 
+      id="outlined-basic"
+      className={classes.inputOutline}
+      type="text"
+      name={props.collectionName}
+      placeholder={props.collectionName}
+      label= {props.collectionName}
+      variant="outlined"
+      autoComplete="off" />
+      <button onKeyDown={(e) => e.key === "Enter" && postData(e)} className="addItemBtn">
+        +
+      </button>
+    </form>
+      <div>
       {props.isBoard ? displayItemsAsBoard() : displayItemsAsList()}
-    </div>
+      </div>
+    </Paper>
+    </ThemeProvider>
+  </div>
   );
 }

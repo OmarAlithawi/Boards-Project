@@ -19,7 +19,7 @@ export default function BoardRender() {
           changes.forEach((change) => {
             const objectNotEmpty = Object.keys(change.doc.data()).length > 0;
             if (change.type === "added" && objectNotEmpty) {
-              console.log("hi");
+              console.log(change.doc);
               dispatch(boardsIDsAction(change.doc.id));
               dispatch(boardsNamesAction(change.doc.data().projectName))
             }
@@ -45,6 +45,7 @@ export default function BoardRender() {
     </div>
   );
 }
+
 
 /*
 <button onClick = {editingOrEdit}>edit</button>

@@ -16,6 +16,11 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import useStyles from "./StyleHats";
 import { boardNameAction, currentBoardIDAction , boardsIDsAction, boardsNamesAction  } from "../../actions";
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek'
+
+
+
 export default function SixHats() {
   const currentBoardId = useSelector((state) => state.currentBoardIDReducer);
   const collectionsName = useSelector((state) => state.collectionNameReducer);
@@ -39,7 +44,6 @@ export default function SixHats() {
   const renderHatsBoard = () => {
      const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
      if(currentBoardId.length > 0){ 
-       console.log(currentBoardId)
     return collectionsNames.map((collection, index) => {
       return (
         <Grid container key ={index} >
@@ -64,7 +68,7 @@ export default function SixHats() {
   const renderHatsList = () => {
     const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
     if(currentBoardId.length > 0){ 
-    return collectionsName.map((collection, index) => {
+    return collectionsNames.map((collection, index) => {
       return (
         <Hat
           isBoard={isBoard}
@@ -77,17 +81,19 @@ export default function SixHats() {
   }
   };
 
+
+
   return (
     <div>
-      <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
-        {" "}
-        {isBoard ? <button>List</button> : <button>Board</button>}{" "}
-      </div>
-      {isBoard ? (
-        <div className="board">{renderHatsBoard()}</div>
-      ) : (
-        renderHatsList()
-      )}
+    <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
+      {" "}
+      {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}
     </div>
+    {isBoard ? (
+      <div className="board">{renderHatsBoard()}</div>
+    ) : (
+      renderHatsList()
+    )}
+  </div>
   );
 }

@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -13,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   palette: {
     primary: {
-      main: purple[500],
+      main: '#66A6FF',
     },
     secondary: {
       main: "#f44336",
@@ -27,6 +26,17 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  inputOutline: {
+    textAlign: 'center',
+    marginLeft: '20px',
+    marginBottom: '5x',
+  },
+  Paper: {
+    padding: "20px 10px 20px 10px",
+    height: "530px",
+    width: "250px",
+  },
 }));
+
 
 export default useStyles;

@@ -28,6 +28,7 @@ import {
 import { useDispatch , useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+
 export default function Sidebar() {
   const dispatch = useDispatch();
   const [hatsName, setHatsName] = useState("");
@@ -68,7 +69,7 @@ export default function Sidebar() {
     });
     dispatch(currentBoardIDAction(createBoard.id));
     dispatch(collectionNameAction(collectionsNames));
-//dispatch(boardsIDsAction(createBoard.id))
+    //dispatch(boardsIDsAction(createBoard.id))
    // setBoradsNames(boardsNames =>  [hatsName , ...boardsNames])
   };
 
@@ -116,7 +117,6 @@ export default function Sidebar() {
           <AddCircleRoundedIcon
             onClick={(e) => {
               createBoards();
-              
               changeRouteBoard();
             }}
             className={classes.plusButtonInside}

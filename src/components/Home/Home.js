@@ -4,8 +4,32 @@ import { withRouter } from "react-router-dom";
 import firebase from "../auth/firebase";
 import Sidebar from "../bars/Sidebar";
 import useStyles from "./StyleHome";
+import Timeline from "./Timeline";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#2b98bc',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#2b98bc',
+      contrastText: '#fff',
+    },
+  },
+});
 
 function Home(props) {
+
+
+
+
   // Clock
   const [date, setDate] = useState(new Date());
 
@@ -42,14 +66,17 @@ function Home(props) {
   return (
     <div className="home-body">
       <Sidebar />
+      <ThemeProvider theme={theme}>
       <main className={classes.main}>
-        <div>
-          <Typography className="heading" component="h1" variant="h5">
-            {partOfTheDay()} {firebase.getCurrentUserName()}
-            <h1>{date.toLocaleTimeString()}</h1>
+        <div className="messege-container">
+          <Typography className="heading" component="h1" variant="h4">
+            {partOfTheDay()}, {firebase.getCurrentUserName()}
           </Typography>
+          <Typography className="heading" component="h5" variant="h3" >{date.toLocaleTimeString()}</Typography>
         </div>
       </main>
+      <Timeline />
+      </ThemeProvider>
     </div>
   );
 }

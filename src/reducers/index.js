@@ -20,6 +20,8 @@ const boardsIDsReducer = (state = [], action) => {
   switch (action.type) {
     case "BOARDS_IDS":
       return [...state, action.payload];
+    case "DELETE_BOARD_IDS" :
+      return state.filter(id => id !== action.payload);
     default:
       return state;
   }
@@ -56,6 +58,8 @@ const boardsNamesReducer = (state = [], action) => {
   switch (action.type) {
     case "BOARD_NAME":
       return [...state ,action.payload];
+    case "DELETE_BOARD_NAME":
+      return state.filter(name => name !== action.payload);
     default:
       return state;
   }
