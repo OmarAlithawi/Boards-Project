@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import GradeRoundedIcon from "@material-ui/icons/GradeRounded";
-import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
+import AddIcon from '@material-ui/icons/Add';
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 import Appbar from "./Appbar";
 import useStyles from "./StyleBars";
@@ -114,7 +114,7 @@ export default function Sidebar() {
               setBoradNameArray([e.target.value]);
             }}
           />
-          <AddCircleRoundedIcon
+          <AddIcon
             onClick={(e) => {
               createBoards();
               changeRouteBoard();

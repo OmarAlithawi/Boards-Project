@@ -14,11 +14,12 @@ import {
   makeStyles,
   FormControl,
   Box,
+  TextField,
   List,
   ListItem,
   Collapse,
-  Paper,
-  TextField
+  Paper
+
 } from "@material-ui/core";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
@@ -220,6 +221,7 @@ export default function Hat(props) {
             deleteItem={deleteItem}
             name={props.collectionName}
             data={hatItemsData}
+            className="notSortedHatItems"
           />
        }
       </div>
@@ -229,6 +231,7 @@ export default function Hat(props) {
   
   return (
     <div className="column">
+
     <ThemeProvider theme={theme}>
       <div className="flag-container">
         <div id="flag"> Thinking Hats </div>

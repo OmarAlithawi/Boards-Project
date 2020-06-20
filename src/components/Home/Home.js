@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import firebase from "../auth/firebase";
 import Sidebar from "../bars/Sidebar";
 import useStyles from "./StyleHome";
-import Timeline from "./Timeline";
+import TimelineBox from "./TimelineBox";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
@@ -75,7 +75,7 @@ function Home(props) {
           <Typography className="heading" component="h5" variant="h3" >{date.toLocaleTimeString()}</Typography>
         </div>
       </main>
-      <Timeline />
+      <TimelineBox />
       </ThemeProvider>
     </div>
   );

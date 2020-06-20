@@ -1,6 +1,9 @@
 import React, { useState , useEffect } from "react";
 import Hat from "./Hat";
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import { db } from "../auth/firebase";
+
 import {
   Grid,
   InputLabel,
@@ -13,7 +16,9 @@ import {
   ListItem,
   Collapse,
 } from "@material-ui/core";
+
 import { useSelector, useDispatch } from "react-redux";
+
 import useStyles from "./StyleHats";
 import { boardNameAction, currentBoardIDAction , boardsIDsAction, boardsNamesAction  } from "../../actions";
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
@@ -85,15 +90,17 @@ export default function SixHats() {
 
   return (
     <div>
-    <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
-      {" "}
-      {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}
-    </div>
-    {isBoard ? (
-      <div className="board">{renderHatsBoard()}</div>
-    ) : (
-      renderHatsList()
-    )}
+
+      <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
+        {" "}
+        {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}
+      </div>
+      {isBoard ? (
+        <div className="board">{renderHatsBoard()}</div>
+      ) : (
+        renderHatsList()
+      )}
+
   </div>
   );
 }
