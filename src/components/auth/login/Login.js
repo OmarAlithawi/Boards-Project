@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  TextField,
-  Typography,
-  Avatar,
-  Button,
-  FormControl,
-  Grid,
-} from "@material-ui/core";
+import { TextField, Typography, Avatar, Button, FormControl, Grid } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Link, withRouter } from "react-router-dom";
 import Copyright from "./Copyright";
