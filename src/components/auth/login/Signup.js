@@ -12,38 +12,59 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link, withRouter } from "react-router-dom";
 import firebase from "../firebase";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#3177c6',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#fff',
+      main: '#66A6FF',
+      dark: '#4d7eb7',
+      contrastText: '#fff',
+    },
+  },
+});
+
+
 
 const styles = (theme) => ({
   main: {
     width: "auto",
     display: "block", // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(400 + theme.spacing(3 * 2))]: {
       width: 400,
       marginLeft: "auto",
       marginRight: "auto",
     },
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${
-      theme.spacing.unit * 3
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${
+      theme.spacing(3)
     }px`,
   },
   avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing ,
+    backgroundColor: '#66A6FF',
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing ,
   },
   submit: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3) ,
   },
 });
 
@@ -55,20 +76,21 @@ function Signup(props) {
   const [password, setPassword] = useState("");
 
   return (
+    <ThemeProvider theme={theme} >
     <main className={classes.main}>
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register Account
+          Sign Up
         </Typography>
         <form
           className={classes.form}
           onSubmit={(e) => e.preventDefault() && false}
         >
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="name">Name</InputLabel>
+            <InputLabel htmlFor="name">Full Name</InputLabel>
             <Input
               id="name"
               value={name}
@@ -125,6 +147,7 @@ function Signup(props) {
         </form>
       </Paper>
     </main>
+    </ThemeProvider>
   );
 
   async function onSignup() {

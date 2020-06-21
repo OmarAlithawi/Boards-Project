@@ -180,9 +180,25 @@ margin: auto;
   width: 600px;
 }
 
+.aboutus-profiles {
+  margin-top: 25px;
+}
+
 .notSortedHatItems {
   max-height: 200px !important;
 }
+
+.avatar-img-1 {
+  margin-left: 40px;
+  margin-bottom: 5px;
+}
+
+.avatar-img-2 {
+  margin-left: 23px;  
+  margin-bottom: 5px;
+}
+
+
 
 
 /* Contact Us  */
@@ -204,6 +220,9 @@ margin: auto;
 
 .home-body {
   padding-bottom: 50px;
+  background-image: url('https://source.unsplash.com/random');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .MuiDrawer-paper{
