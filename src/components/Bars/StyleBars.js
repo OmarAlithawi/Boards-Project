@@ -6,6 +6,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    backgroundImage: 'url("../home/brushed-alum.png")',
   },
   appBar: {
     zndex: theme.zIndex.drawer + 1,

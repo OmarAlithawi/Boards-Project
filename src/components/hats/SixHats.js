@@ -3,18 +3,10 @@ import Hat from "./Hat";
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import { db } from "../auth/firebase";
-
-import {
-  Grid,
-} from "@material-ui/core";
-
+import { Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-
 import useStyles from "./StyleHats";
 import { boardNameAction, currentBoardIDAction , boardsIDsAction, boardsNamesAction  } from "../../actions";
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import ViewWeekIcon from '@material-ui/icons/ViewWeek'
-
 
 
 export default function SixHats() {
@@ -38,11 +30,11 @@ export default function SixHats() {
   } , [currentBoardId])
 
   const renderHatsBoard = () => {
-     const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+     const collectionsNames = ['Blue Hat' , 'Yellow Hat' , 'White Hat' , 'Red Hat' , 'Black Hat' , 'Green Hat'];
      if(currentBoardId.length > 0){ 
     return collectionsNames.map((collection, index) => {
       return (
-        <Grid container key ={index} >
+        <Grid container className="container-title" key ={index} >
           <Grid container item xs={12} spacing={2}>
             {
               <Hat
@@ -81,7 +73,6 @@ export default function SixHats() {
 
   return (
     <div>
-
       <div className="toggleBtn" onClick={() => setIsBoard(!isBoard)}>
         {" "}
         {isBoard ? <ViewWeekIcon className="boardIcon" /> : <FormatListBulletedIcon className="listIcon" />}{" "}

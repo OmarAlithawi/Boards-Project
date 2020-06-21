@@ -49,6 +49,8 @@ function Home(props) {
       return "Good Morning";
     } else if (date.getHours() > 12 && date.getHours() < 18) {
       return "Good Afternoon";
+    } else if (date.getHours() > 18 && date.getHours() < 21) {
+      return "Good Evening";
     } else {
       return "Good Night";
     }
@@ -72,7 +74,7 @@ function Home(props) {
           <Typography className="heading" component="h1" variant="h4">
             {partOfTheDay()}, {firebase.getCurrentUserName()}
           </Typography>
-          <Typography className="heading" component="h5" variant="h3" >{date.toLocaleTimeString()}</Typography>
+          <Typography className="heading" component="h5" variant="h5" >{date.toLocaleTimeString()}</Typography>
         </div>
       </main>
       <TimelineBox />

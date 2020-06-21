@@ -15,6 +15,7 @@ export default function Item(props) {
       <>
         <input
           type="text"
+          defaultValue={props.doc.data().todo}
           onChange={(e) => setUpdateItemValue(e.target.value)}
         />
         <button

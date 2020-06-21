@@ -1,6 +1,7 @@
 import React from "react";
 import Appbar from "../bars/Appbar";
 import "../../index.css";
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 export default function About() {
   return (
@@ -18,7 +19,24 @@ export default function About() {
           We do not miss any opportunity to communicate with 
           industry experts and to get new knowledge and perspectives of tech collaborations.
         </span>
-        
+        <table>
+          <tr>
+            <tb>
+              Elif Tabak Chorghay
+            </tb>
+            <tb>
+              Omar Alithawi
+            </tb>
+          </tr>
+          <tr>
+            <tb>
+              <LinkedInIcon />
+            </tb>
+            <tb>
+              <LinkedInIcon />
+            </tb>
+          </tr>
+        </table>
       </div>
     </div>
   );

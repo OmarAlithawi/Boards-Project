@@ -9,16 +9,16 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(3),
-      width: '300px',
+      margin: theme.spacing(1),
+      width: '350px'
     },
     display: 'block',
   },
   submitBtn: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(1),
   },
   contactTitle: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(1),
   }
 }));
 

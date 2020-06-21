@@ -100,7 +100,6 @@ export default function Sidebar() {
           ))}
         </List>
         <Divider />
-
         <IconButton
           className={classes.plusButton}
           style={{ backgroundColor: "transparent" }}

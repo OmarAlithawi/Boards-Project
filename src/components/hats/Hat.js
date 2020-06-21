@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { allItemsIdsAction } from "../../actions";
 import useStyles from "./StyleHats";
 import { boardNameAction, currentBoardIDAction , boardsIDsAction } from "../../actions";
+import { FaRedhat } from 'react-icons/fa';
 import {
   Grid,
   InputLabel,
@@ -14,6 +15,7 @@ import {
   makeStyles,
   FormControl,
   Box,
+  Typography,
   TextField,
   List,
   ListItem,
@@ -231,12 +233,12 @@ export default function Hat(props) {
   
   return (
     <div className="column">
-
     <ThemeProvider theme={theme}>
-      <div className="flag-container">
-        <div id="flag"> Thinking Hats </div>
-      </div>
     <Paper className={classes.Paper} elevation={2}>
+      <Paper elevation={0} className="container-icon-and-title">
+      <FaRedhat className="hat-icon" />
+        <Typography className="board-title">{props.collectionName}</Typography>
+      </Paper>
     <form className="addItemForm" onSubmit={(e) => postData(e)}>
       <TextField 
       id="outlined-basic"
