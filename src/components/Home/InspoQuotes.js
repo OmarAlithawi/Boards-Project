@@ -5,7 +5,7 @@ import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 
 
 const InspoQuotes = React.memo( function InspoQuotes() {
-
+/*.. */
  const Quote = require('inspirational-quotes');
  const classes = useStyles();
 
