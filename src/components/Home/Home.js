@@ -1,36 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import firebase from "../auth/firebase";
 import Sidebar from "../bars/Sidebar";
 import useStyles from "./StyleHome";
-import TimelineBox from "./TimelineBox";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import InspoQuotes from "./InspoQuotes";
 
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#fff',
-      main: '#66A6FF',
-      dark: '#2b98bc',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#fff',
-      main: '#66A6FF',
-      dark: '#2b98bc',
-      contrastText: '#fff',
-    },
-  },
-});
 
 function Home(props) {
 
-
-
-
-  // Clock
+  // Clock //
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -42,10 +21,10 @@ function Home(props) {
   const tick = () => {
     setDate(new Date());
   };
-  // Clock ends
+  // Clock ends //
 
   const partOfTheDay = () => {
-    if (date.getHours() < 12) {
+    if (date.getHours() > 6 && date.getHours() < 12) {
       return "Good Morning";
     } else if (date.getHours() > 12 && date.getHours() < 18) {
       return "Good Afternoon";
@@ -66,22 +45,23 @@ function Home(props) {
   }
 
   return (
-    <div className="home-body">
+    <div className="homeBody">
       <Sidebar />
-      <ThemeProvider theme={theme}>
-      <main className={classes.main}>
-        <div className="messege-container">
-          <Typography className="heading" component="h1" variant="h4">
-            {partOfTheDay()}, {firebase.getCurrentUserName()}
-          </Typography>
-          <Typography className="heading" component="h5" variant="h5" >{date.toLocaleTimeString()}</Typography>
-        </div>
-      </main>
-      <TimelineBox />
-      </ThemeProvider>
+          <main className={classes.welcomeMessageContainer}>
+            <div className="messege-container">
+              <Typography className="heading" component="h1" variant="h3">
+                {partOfTheDay()}, {firebase.getCurrentUserName()}
+              </Typography>
+              <Typography className={classes.heading} component="h4" variant="h5" >{date.toLocaleTimeString()}</Typography>
+            </div>
+          </main>
+      <div>
+        <InspoQuotes />
+      </div>
     </div>
   );
 }
+
 
 export default withRouter(Home);
 

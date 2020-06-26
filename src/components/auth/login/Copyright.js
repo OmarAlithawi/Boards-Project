@@ -1,10 +1,14 @@
 import React from "react";
 import { Typography, Link } from "@material-ui/core";
+import useStyles from "./StyleLogin";
 import "./App.css";
 
 export default function Copyright() {
+
+  const classes = useStyles();
+
   return (
-    <Typography color="textSecondary" align="center">
+    <Typography className={classes.copyrightName} color="textSecondary" align="center">
       {"Copyright ©"}
       <Link
         color="inherit"

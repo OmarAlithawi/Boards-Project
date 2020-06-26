@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     height: "530px",
     width: "250px",
   },
+  listStyleBoard: {
+    height: '60px'
+  }
 }));
 
 

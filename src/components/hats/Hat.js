@@ -234,19 +234,18 @@ export default function Hat(props) {
   return (
     <div className="column">
     <ThemeProvider theme={theme}>
-    <Paper className={classes.Paper} elevation={2}>
-      <Paper elevation={0} className="container-icon-and-title">
-      <FaRedhat className="hat-icon" />
-        <Typography className="board-title">{props.collectionName}</Typography>
-      </Paper>
+    <Paper className={classes.Paper} elevation={1} square >
+          <Typography className="board-title">
+            <FaRedhat className="hat-icon" style={{ color: props.colorsArray }} />
+          </Typography>
     <form className="addItemForm" onSubmit={(e) => postData(e)}>
       <TextField 
       id="outlined-basic"
       className={classes.inputOutline}
       type="text"
       name={props.collectionName}
-      placeholder={props.collectionName}
       label= {props.collectionName}
+      placeholder={props.collectionName}
       variant="outlined"
       autoComplete="off" />
       <button onKeyDown={(e) => e.key === "Enter" && postData(e)} className="addItemBtn">

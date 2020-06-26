@@ -100,27 +100,26 @@ export default function Sidebar() {
           ))}
         </List>
         <Divider />
-        <IconButton
+        <div className={classes.projectNameInputContainer}>
+        <TextField
+          className={classes.textField}
+          name={hatsName}
+          onChange={(e) => {
+            e.persist()
+            setHatsName(e.target.value)
+            setBoradNameArray([e.target.value]);
+          }}
+        />
+        <IconButton onClick={(e) => {
+            createBoards();
+            changeRouteBoard();
+          }}
           className={classes.plusButton}
           style={{ backgroundColor: "transparent" }}
-        >
-          <TextField
-            className={classes.textField}
-            name={hatsName}
-            onChange={(e) => 
-              {e.persist()
-              setHatsName(e.target.value) 
-              setBoradNameArray([e.target.value]);
-            }}
-          />
-          <AddIcon
-            onClick={(e) => {
-              createBoards();
-              changeRouteBoard();
-            }}
-            className={classes.plusButtonInside}
-          />
+          >
+          <AddIcon className={classes.plusButtonInside} />
         </IconButton>
+        </div>
 
         {/* Here will be the created project names/lists  by user  */}
         
@@ -128,7 +127,7 @@ export default function Sidebar() {
 
         <List>
           {boardsNames.map((boardName , index) => (
-            <SidebarItems  boardId = {currentBoardId} allBoardsIds = {allBoardsIds} index = {index} boardName = {boardName} />
+            <SidebarItems  boardId = {currentBoardId} allBoardsIds = {allBoardsIds} index = {index} key={index} boardName = {boardName} />
           ))}
         </List>
       </Drawer>

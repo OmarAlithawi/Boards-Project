@@ -34,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
   icons: {
     color: "#66a6ff",
   },
+  textField : {
+    width: '130px',
+    margin: '10px auto 30px 40px',
+  },
+  projectNameInputContainer: {
+    marginTop: '10px',
+  },
 }));
 
 export default useStyles;

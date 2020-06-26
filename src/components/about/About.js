@@ -22,7 +22,6 @@ const useStyles = makeStyles({
   },
   paper: {
     width: '180px',
-    display: 'flex',
     float: 'left',
     margin: '0 10px 0 0',
     marginTop: '56px',
@@ -53,7 +52,7 @@ export default function About() {
     <div className="aboutPage">
       <Appbar />
       <div className="aboutUsGif">
-      <img src={require('./contact.png')} className="programmers" />
+      <img src={require('./contact.png')} className="programmers" alt="programmers" />
       </div>
       <div className="aboutUsText">
         <h2>Who are we?</h2>

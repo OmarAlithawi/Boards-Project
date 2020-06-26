@@ -9,6 +9,7 @@ import loginImage from "./4380.jpg";
 import "./App.css";
 
 function Login(props) {
+  
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +32,6 @@ function Login(props) {
             <TextField
               name="email"
               variant="outlined"
-              color="success"
               required
               fullWidth
               label="Email Address"

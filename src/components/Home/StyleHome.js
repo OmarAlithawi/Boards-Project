@@ -18,13 +18,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
+    backgroundColor: 'white',
     alignItems: "center",
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${
       theme.spacing(3)
     }px`,
   },
   avatar: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   submit: {
@@ -47,6 +48,33 @@ const useStyles = makeStyles((theme) => ({
     height: '380px',
     marginLeft: '700px',
     marginTop: '270px',
+  },
+  quoteContainer: {
+    marginLeft: '30%',
+  },
+  homeBody: {
+    height: '100%',
+    width: '100%',
+    color: 'white',
+  },
+  quote: {
+    width: '10px',
+    color: '#fff',
+    margin: '7px',
+  },
+  heading: {
+    color: '#fff !important',
+    borderBottom: '2px solid #88F7FE',
+    marginRight: '50px',
+    fontWeight: '600px',
+    justifyContent: 'center',
+  },
+  InspoQuotesText: {
+    color: '#fff',
+    marginTop: '80px',
+    width: '90%',
+    fontSize: '22px',
+    paddingBottom: '100px',
   }
 }));
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { listItemIdAction } from "../../actions";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 
 export default function Item(props) {
@@ -18,15 +19,14 @@ export default function Item(props) {
           defaultValue={props.doc.data().todo}
           onChange={(e) => setUpdateItemValue(e.target.value)}
         />
-        <button
+
+        <img src={require('./images/accept.png')}
           onClick={(e) => {
             props.updateItem(e, id, updateItemValue);
             setIsEditItem(false);
           }}
-          style={{ fontSize: 15 }}
-        >
-          done
-        </button>
+          className="editImg" />
+          
       </>
     );
   };
@@ -59,14 +59,14 @@ export default function Item(props) {
       />
       {!isEditItem && <li>{props.doc.data().todo}</li>}
       {isEditItem && editForm(props.doc.id)}
-      <img src="https://image.flaticon.com/icons/svg/3090/3090407.svg" 
+      <img src={require('./images/delete.png')}
         onClick={(e) => {
           dispatch(listItemIdAction(props.doc.id));
           props.deleteItem(e);
         }}
        className="trashImg" />
 
-      <img src="https://image.flaticon.com/icons/png/512/660/660756.png"
+      <img src={require('./images/edit.png')}
         onClick={() => setIsEditItem(!isEditItem)}
       className="editImg" />
       

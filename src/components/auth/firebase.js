@@ -26,6 +26,8 @@ class Firebase {
     await this.auth.createUserWithEmailAndPassword(email, password);
     return this.auth.currentUser.updateProfile({
       displayName: name,
+      email: email,
+
     });
   }
   isInitialized() {

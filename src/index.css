@@ -27,9 +27,7 @@ code {
 height: 100%;
 
 }
-.avatar-img {
-  margin-left: 2%;
-}
+
 .dashboard {
   color: white;
 }
@@ -54,19 +52,18 @@ height: 100%;
   border-radius: 2px;
 }
 
-
 .trashImg, .editImg {
-  width: 17px;
-  margin: 2px;
+  width: auto;
+  height: 20px;
 }
 
 .trashImg {
-  height: 27px;
+  cursor: pointer;
 }
 
-.editImg {
-  height: 20px;
-  padding-top: 3px;
+.trashImg:hover {
+  display: block;
+  cursor: pointer;
 }
 
 .board{
@@ -76,8 +73,15 @@ height: 100%;
 }
 
 .column {
-  margin-left: 50px;
-  margin-top: 30px;
+  margin-top: 3px;
+  margin-left: 15px;
+}
+
+.homeBody {
+background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+background-repeat: no-repeat;
+background-size: cover;
+padding: 200px 50px 241px 30px;
 }
 
 li{
@@ -85,6 +89,7 @@ li{
   color: rgb(51, 50, 50);
   font-family: 'Nanum Gothic', sans-serif;
 }
+
 
 .checkBox {
   border: 1px solid #2196f3 !important;
@@ -219,7 +224,8 @@ margin: auto;
 /* Home  */
 
 .home-body {
-  padding-bottom: 50px;
+  height: 100%;
+  width: 100%;
   background-image: url('https://source.unsplash.com/random');
   background-repeat: no-repeat;
   background-size: cover;
@@ -230,28 +236,37 @@ margin: auto;
 }
 
 .messege-container {
-  margin-left: 320px;
-  margin-top: 50px;
+  margin-left: 300px;
   text-align: left;
 }
 
 .heading {
-  color: #2e67b2;
-  margin-left: 50px !important;
+  color: #fff;
 }
 
 .hat-icon {
   margin-right: 7px;
+  padding-top: 10px;
+  color: #b8bfd4;
+}
+
+.board-title-top {
+  margin-left: 70px !important;
+  font-weight: 900 !important;
 }
 
 .board-title {
   font-size: 22px;
+  justify-content: center;
+  padding-top: 10px;
+  color: #fff;
+  font-weight: 800;
 }
 
 .container-icon-and-title {
   margin-left: 0;
   display: flex;
-  height: 30px;
-  margin-bottom: 7px;
+  height: 40px;
+  margin-bottom: 1px;
   justify-content: center;
 }

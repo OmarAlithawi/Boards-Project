@@ -40,7 +40,7 @@ export default function BoardRender() {
     <div>
       <Sidebar />
       <main className={classes.boards}>
-        <Typography className="heading" component="h1" variant="h5">
+        <Typography className="board-title-top" component="h1" variant="h5">
           {boardName}
         </Typography>
         <SixHats />

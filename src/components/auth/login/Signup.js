@@ -130,7 +130,7 @@ function Signup(props) {
             onClick={onSignup}
             className={classes.submit}
           >
-            Register
+            Sign Up
           </Button>
 
           <Button

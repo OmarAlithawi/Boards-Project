@@ -3,12 +3,15 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import useStyles from "./StyleLogin";
 import { withRouter } from "react-router-dom";
 import firebase from "../firebase";
 
 const ITEM_HEIGHT = 48;
 
 function Logout(props) {
+
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -28,7 +31,7 @@ function Logout(props) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreVertIcon className={classes.logoutIcon} />
       </IconButton>
       <Menu
         id="long-menu"

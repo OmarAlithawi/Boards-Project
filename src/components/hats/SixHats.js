@@ -31,6 +31,7 @@ export default function SixHats() {
 
   const renderHatsBoard = () => {
      const collectionsNames = ['Blue Hat' , 'Yellow Hat' , 'White Hat' , 'Red Hat' , 'Black Hat' , 'Green Hat'];
+    const colorsArray = ['rgb(29, 171, 252)', 'rgb(254,	211,	49)', '#999999', 'rgb(214	57	84)', '#000', 'rgb(58,	190,	190)'];
      if(currentBoardId.length > 0){ 
     return collectionsNames.map((collection, index) => {
       return (
@@ -41,6 +42,7 @@ export default function SixHats() {
                 isBoard={isBoard}
                 key={index}
                 collectionName={collection}
+                colorsArray={colorsArray[index]}
                 boardID={currentBoardId}
               />
             }
@@ -54,7 +56,8 @@ export default function SixHats() {
   // render the data as a list
 
   const renderHatsList = () => {
-    const collectionsNames = ['blue-hat' , 'yellow-hat' , 'white-hat' , 'red-hat' , 'black-hat' , 'green-hat'];
+    const collectionsNames = ['Blue Hat', 'Yellow Hat', 'White Hat', 'Red Hat', 'Black Hat', 'Green Hat'];
+    const colorsArray = ['#98E1F9', '#FFDC8C', '#999999', '#FF7C9B', '#000', '#91EAD2'];
     if(currentBoardId.length > 0){ 
     return collectionsNames.map((collection, index) => {
       return (
@@ -62,7 +65,9 @@ export default function SixHats() {
           isBoard={isBoard}
           key={index}
           collectionName={collection}
+          colorsArray={colorsArray[index]}
           boardID={currentBoardId}
+          className={classes.listStyleBoard}
         />
       );
     });

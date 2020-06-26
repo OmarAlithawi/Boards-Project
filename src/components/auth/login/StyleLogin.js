@@ -4,9 +4,9 @@ const useStyles = makeStyles((theme) => ({
   main: {
     width: "auto",
     display: "block", // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 5,
-    marginRight: theme.spacing.unit * 5,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 5 * 2)]: {
+    marginLeft: theme.spacing(5),
+    marginRight: theme.spacing(5),
+    [theme.breakpoints.up(400 + theme.spacing(5 * 2))]: {
       width: "30%",
       marginLeft: "60%",
       marginTop: 130,
@@ -14,16 +14,16 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   avatar: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing,
     backgroundColor: "#4476BD",
     marginLeft: "45%",
     marginBottom: "2%",
   },
   form: {
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing,
   },
   submit: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
     backgroundColor: "#6891C9",
     color: "white",
   },
@@ -40,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "4%",
     marginLeft: "3%",
   },
+  copyrightName: {
+    marginTop: '40px',
+  },
+  logoutIcon: {
+    paddingRight: '10px',
+    position: 'absolute',
+  }
 }));
 
 export default useStyles;

@@ -1,22 +1,12 @@
 import React from 'react'
-import {
-    Drawer,
-    Toolbar,
-    List,
-    Divider,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    IconButton,
-    TextField
-    
-  } from "@material-ui/core";
-  import LabelImportantIcon from "@material-ui/icons/LabelImportant";
-  import {currentBoardIDAction , boardNameAction , deleteBoardNameAction ,deleteBoardIDAction} from '../../actions'   
-  import useStyles from "./StyleBars";
-  import { useDispatch } from "react-redux";
-  import { useHistory } from "react-router-dom";
-  import { db } from "../auth/firebase";
+import {  ListItem, ListItemIcon, ListItemText, } from "@material-ui/core";
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import LabelImportantIcon from "@material-ui/icons/LabelImportant";
+import {currentBoardIDAction , boardNameAction , deleteBoardNameAction ,deleteBoardIDAction} from '../../actions'   
+import useStyles from "./StyleBars";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { db } from "../auth/firebase";
 
 
 export default function Item(props) {
@@ -56,7 +46,7 @@ export default function Item(props) {
                 changeRouteBoard();
             }}/>
 
-           <ListItemText primary={"X"} onClick = { (e) => {
+           <DeleteOutlineIcon onClick = { (e) => {
                 dispatch(deleteBoardNameAction(props.boardName));
                 dispatch(deleteBoardIDAction(boardId));
                 deleteItem(e)
