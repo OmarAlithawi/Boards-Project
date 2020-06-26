@@ -1,0 +1,20 @@
+body {
+   background: white;
+}
+
+.MuiOutlinedInput-root, .MuiInputBase-formControl {
+    outline-style: none !important;
+}
+
+.PrivateNotchedOutline-root-8:focus {
+    outline-style: none !important;
+}
+
+.mdc-notched-outline--notched:focus {
+   outline-style: none !important;
+}
+.MuiTypography-h5 {
+    color: #3d4c72 !important;
+}
+
+

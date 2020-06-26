@@ -1,13 +1,272 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #2d2f30;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+ /* Navbar */
+ 
+.navigation-items {
+  margin-left: 2%;
+  color: aliceblue;
+  text-decoration: none;
+}
+.navigation-items:hover {
+  color: #89f7fe;
+}
+.navbar-head {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+height: 100%;
+
+}
+
+.dashboard {
+  color: white;
+}
+
+/* BOARD  */
+
+.list {
+  list-style: none;
+  position: relative;
+  right: 40px;
+  width: 100%;
+}
+
+.listItems{
+  display: flex;
+  width: 100%;
+  height: 30px;
+  line-height: 1.3rem;
+  padding: 3px 3px 3px 3px;
+  border-bottom: 1px solid rgba(33, 34, 34, 0.411);
+  justify-content: space-between;
+  border-radius: 2px;
+}
+
+.trashImg, .editImg {
+  width: auto;
+  height: 20px;
+}
+
+.trashImg {
+  cursor: pointer;
+}
+
+.trashImg:hover {
+  display: block;
+  cursor: pointer;
+}
+
+.board{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.column {
+  margin-top: 3px;
+  margin-left: 15px;
+}
+
+.homeBody {
+background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+background-repeat: no-repeat;
+background-size: cover;
+padding: 200px 50px 241px 30px;
+}
+
+li{
+  position: relative;
+  color: rgb(51, 50, 50);
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+.checkBox {
+  border: 1px solid #2196f3 !important;
+}
+
+.checkBox:checked ~ li::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #89F7FE;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50% ,-60%);
+} 
+
+/* Change Display Button  */
+
+.toggleBtn {
+  position: fixed;
+  cursor: pointer;
+  width: 10%;
+  top: 80px;
+  margin-left: 950px;
+}
+
+.listIcon, .boardIcon {
+  color: cornflowerblue;
+}
+
+.fadeOut{
+  opacity: 0;
+  transition: .9s all ease;
+}
+
+.addItemBtn {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 8px 0 0 5px;
+  color: #2196f3;
+  font-size: 24px;
+  border: none;
+  box-shadow: none;
+}
+
+.addItemBtn:active {
+  border: none;
+  box-shadow: none;
+}
+
+.selectSortingDropdown {
+  border-radius: 5px;
+  border-color: #2196f3;
+  margin: 5px 0 0 20px;
+  color: gray;
+}
+
+/* Outlined Input  */
+
+.MuiOutlinedInput-input {
+  height: 20px;
+  display: flex !important;
+} 
+input#outlined-basic.MuiInputBase-input.MuiOutlinedInput-input {
+  height: 7px;
+}
+
+/* About Page  */
+
+.aboutPage {
+  font-family: sans-serif;
+}
+
+.aboutUsGif {
+float: left;
+margin: auto;
+}
+
+.aboutUsText {
+  float: left;
+  margin: 150px 70px auto 55%;
+  color: #2d2f30;
+  max-width: 450px;
+  position: fixed;
+  line-height: 1.5rem;
+}
+
+.programmers {
+  margin-top: 100px;
+  margin-left: 60px;
+  width: 600px;
+}
+
+.aboutus-profiles {
+  margin-top: 25px;
+}
+
+.notSortedHatItems {
+  max-height: 200px !important;
+}
+
+.avatar-img-1 {
+  margin-left: 40px;
+  margin-bottom: 5px;
+}
+
+.avatar-img-2 {
+  margin-left: 23px;  
+  margin-bottom: 5px;
+}
+
+
+
+
+/* Contact Us  */
+
+.contactus-img-container {
+  float: right;
+  margin-top: 50px;
+  margin-right: 170px;
+  width: 50%;
+}
+
+.contactus-text-container {
+  margin-top: 80px;
+  margin-left: 100px;
+  position: absolute;
+}
+
+/* Home  */
+
+.home-body {
+  height: 100%;
+  width: 100%;
+  background-image: url('https://source.unsplash.com/random');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.MuiDrawer-paper{
+  background: #cbebed;
+}
+
+.messege-container {
+  margin-left: 300px;
+  text-align: left;
+}
+
+.heading {
+  color: #fff;
+}
+
+.hat-icon {
+  margin-right: 7px;
+  padding-top: 10px;
+  color: #b8bfd4;
+}
+
+.board-title-top {
+  margin-left: 70px !important;
+  font-weight: 900 !important;
+}
+
+.board-title {
+  font-size: 22px;
+  justify-content: center;
+  padding-top: 10px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.container-icon-and-title {
+  margin-left: 0;
+  display: flex;
+  height: 40px;
+  margin-bottom: 1px;
+  justify-content: center;
 }
