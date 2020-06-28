@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css",
+    "main.js": "/OmarAlithawi/Boards-Project/static/js/main.591fd440.chunk.js",
+    "main.js.map": "/OmarAlithawi/Boards-Project/static/js/main.591fd440.chunk.js.map",
+    "runtime-main.js": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js",
+    "runtime-main.js.map": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js.map",
+    "static/js/2.2ad505d1.chunk.js": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js",
+    "static/js/2.2ad505d1.chunk.js.map": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.map",
+    "index.html": "/OmarAlithawi/Boards-Project/index.html",
+    "precache-manifest.0a3c889f21096c5869beaef0b2ca1e5f.js": "/OmarAlithawi/Boards-Project/precache-manifest.0a3c889f21096c5869beaef0b2ca1e5f.js",
+    "service-worker.js": "/OmarAlithawi/Boards-Project/service-worker.js",
+    "static/css/main.707cffbe.chunk.css.map": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css.map",
+    "static/js/2.2ad505d1.chunk.js.LICENSE.txt": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.LICENSE.txt",
+    "static/media/4380.jpg": "/OmarAlithawi/Boards-Project/static/media/4380.6c3912ff.jpg",
+    "static/media/accept.png": "/OmarAlithawi/Boards-Project/static/media/accept.30f8e426.png",
+    "static/media/contact-us.jpg": "/OmarAlithawi/Boards-Project/static/media/contact-us.64a2760b.jpg",
+    "static/media/contact.png": "/OmarAlithawi/Boards-Project/static/media/contact.db132a5f.png",
+    "static/media/delete.png": "/OmarAlithawi/Boards-Project/static/media/delete.55f1a5f7.png",
+    "static/media/edit.png": "/OmarAlithawi/Boards-Project/static/media/edit.08285c94.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dec41684.js",
+    "static/js/2.2ad505d1.chunk.js",
+    "static/css/main.707cffbe.chunk.css",
+    "static/js/main.591fd440.chunk.js"
+  ]
+}
