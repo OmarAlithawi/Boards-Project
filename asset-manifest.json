@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css",
-    "main.js": "/OmarAlithawi/Boards-Project/static/js/main.591fd440.chunk.js",
-    "main.js.map": "/OmarAlithawi/Boards-Project/static/js/main.591fd440.chunk.js.map",
+    "main.js": "/OmarAlithawi/Boards-Project/static/js/main.689afbdd.chunk.js",
+    "main.js.map": "/OmarAlithawi/Boards-Project/static/js/main.689afbdd.chunk.js.map",
     "runtime-main.js": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js",
     "runtime-main.js.map": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js.map",
     "static/js/2.2ad505d1.chunk.js": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js",
     "static/js/2.2ad505d1.chunk.js.map": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.map",
     "index.html": "/OmarAlithawi/Boards-Project/index.html",
-    "precache-manifest.0a3c889f21096c5869beaef0b2ca1e5f.js": "/OmarAlithawi/Boards-Project/precache-manifest.0a3c889f21096c5869beaef0b2ca1e5f.js",
+    "precache-manifest.9341e632afcca51c5927f7919ab578b6.js": "/OmarAlithawi/Boards-Project/precache-manifest.9341e632afcca51c5927f7919ab578b6.js",
     "service-worker.js": "/OmarAlithawi/Boards-Project/service-worker.js",
     "static/css/main.707cffbe.chunk.css.map": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css.map",
     "static/js/2.2ad505d1.chunk.js.LICENSE.txt": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.LICENSE.txt",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.dec41684.js",
     "static/js/2.2ad505d1.chunk.js",
     "static/css/main.707cffbe.chunk.css",
-    "static/js/main.591fd440.chunk.js"
+    "static/js/main.689afbdd.chunk.js"
   ]
 }
