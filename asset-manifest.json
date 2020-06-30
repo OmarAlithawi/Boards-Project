@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css",
-    "main.js": "/OmarAlithawi/Boards-Project/static/js/main.689afbdd.chunk.js",
-    "main.js.map": "/OmarAlithawi/Boards-Project/static/js/main.689afbdd.chunk.js.map",
-    "runtime-main.js": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js",
-    "runtime-main.js.map": "/OmarAlithawi/Boards-Project/static/js/runtime-main.dec41684.js.map",
-    "static/js/2.2ad505d1.chunk.js": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js",
-    "static/js/2.2ad505d1.chunk.js.map": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.map",
-    "index.html": "/OmarAlithawi/Boards-Project/index.html",
-    "precache-manifest.9341e632afcca51c5927f7919ab578b6.js": "/OmarAlithawi/Boards-Project/precache-manifest.9341e632afcca51c5927f7919ab578b6.js",
-    "service-worker.js": "/OmarAlithawi/Boards-Project/service-worker.js",
-    "static/css/main.707cffbe.chunk.css.map": "/OmarAlithawi/Boards-Project/static/css/main.707cffbe.chunk.css.map",
-    "static/js/2.2ad505d1.chunk.js.LICENSE.txt": "/OmarAlithawi/Boards-Project/static/js/2.2ad505d1.chunk.js.LICENSE.txt",
-    "static/media/4380.jpg": "/OmarAlithawi/Boards-Project/static/media/4380.6c3912ff.jpg",
-    "static/media/accept.png": "/OmarAlithawi/Boards-Project/static/media/accept.30f8e426.png",
-    "static/media/contact-us.jpg": "/OmarAlithawi/Boards-Project/static/media/contact-us.64a2760b.jpg",
-    "static/media/contact.png": "/OmarAlithawi/Boards-Project/static/media/contact.db132a5f.png",
-    "static/media/delete.png": "/OmarAlithawi/Boards-Project/static/media/delete.55f1a5f7.png",
-    "static/media/edit.png": "/OmarAlithawi/Boards-Project/static/media/edit.08285c94.png"
+    "main.css": "/OmarAlithawi/static/css/main.707cffbe.chunk.css",
+    "main.js": "/OmarAlithawi/static/js/main.fb9acd24.chunk.js",
+    "main.js.map": "/OmarAlithawi/static/js/main.fb9acd24.chunk.js.map",
+    "runtime-main.js": "/OmarAlithawi/static/js/runtime-main.3c6d129f.js",
+    "runtime-main.js.map": "/OmarAlithawi/static/js/runtime-main.3c6d129f.js.map",
+    "static/js/2.10355580.chunk.js": "/OmarAlithawi/static/js/2.10355580.chunk.js",
+    "static/js/2.10355580.chunk.js.map": "/OmarAlithawi/static/js/2.10355580.chunk.js.map",
+    "index.html": "/OmarAlithawi/index.html",
+    "precache-manifest.5a6cc91b6107e158ee101f2b9e0d1e3f.js": "/OmarAlithawi/precache-manifest.5a6cc91b6107e158ee101f2b9e0d1e3f.js",
+    "service-worker.js": "/OmarAlithawi/service-worker.js",
+    "static/css/main.707cffbe.chunk.css.map": "/OmarAlithawi/static/css/main.707cffbe.chunk.css.map",
+    "static/js/2.10355580.chunk.js.LICENSE.txt": "/OmarAlithawi/static/js/2.10355580.chunk.js.LICENSE.txt",
+    "static/media/4380.jpg": "/OmarAlithawi/static/media/4380.6c3912ff.jpg",
+    "static/media/accept.png": "/OmarAlithawi/static/media/accept.30f8e426.png",
+    "static/media/contact-us.jpg": "/OmarAlithawi/static/media/contact-us.64a2760b.jpg",
+    "static/media/contact.png": "/OmarAlithawi/static/media/contact.db132a5f.png",
+    "static/media/delete.png": "/OmarAlithawi/static/media/delete.55f1a5f7.png",
+    "static/media/edit.png": "/OmarAlithawi/static/media/edit.08285c94.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.dec41684.js",
-    "static/js/2.2ad505d1.chunk.js",
+    "static/js/runtime-main.3c6d129f.js",
+    "static/js/2.10355580.chunk.js",
     "static/css/main.707cffbe.chunk.css",
-    "static/js/main.689afbdd.chunk.js"
+    "static/js/main.fb9acd24.chunk.js"
   ]
 }
