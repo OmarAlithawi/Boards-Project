@@ -18,7 +18,7 @@ export default function Item(props) {
     const boardId = boardsIds[props.index];
 
     function changeRouteBoard() {
-      history.push("/board");
+      history.push("/Boards-Project/board");
     }
 
     const deleteItem = (e) => {

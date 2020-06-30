@@ -40,7 +40,7 @@ function Home(props) {
   if (!firebase.getCurrentUserName()) {
     //user is not loggen in we run this function
     // alert('Please login first.')
-    props.history.replace("/login");
+    props.history.replace("/Boards-Project/login");
     return null;
   }
 

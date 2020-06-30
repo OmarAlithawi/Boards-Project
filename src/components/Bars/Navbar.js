@@ -12,13 +12,13 @@ export default function Navbar() {
 
   return (
     <div className="navbar-head">
-      <NavLink to="/" className="navigation-items">
+      <NavLink to="/Boards-Project/" className="navigation-items">
         Home
       </NavLink>
-      <NavLink to="/contact" className="navigation-items">
+      <NavLink to="/Boards-Project/contact" className="navigation-items">
         Contact
       </NavLink>
-      <NavLink to="/about" className="navigation-items">
+      <NavLink to="/Boards-Project/about" className="navigation-items">
         About Us
       </NavLink>
       <IconButton style={{ backgroundColor: "transparent" }}>

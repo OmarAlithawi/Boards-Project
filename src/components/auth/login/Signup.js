@@ -154,7 +154,7 @@ function Signup(props) {
     try {
       await firebase.register(name, email, password);
       //redirect user to dashboard
-      props.history.replace("/");
+      props.history.replace("/Boards-Project/");
     } catch (error) {
       alert(error.message);
     }

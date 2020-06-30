@@ -75,7 +75,7 @@ function Login(props) {
             <Grid item>
               <Button
                 component={Link}
-                to="/signup"
+                to="/Boards-Project/signup"
                 className={classes.newButtons}
               >
                 Don't have an account? Sign Up
@@ -90,7 +90,7 @@ function Login(props) {
   async function login() {
     try {
       await firebase.login(email, password);
-      props.history.replace("/");
+      props.history.replace("/Boards-Project/");
     } catch (error) {
       alert(error.message);
     }

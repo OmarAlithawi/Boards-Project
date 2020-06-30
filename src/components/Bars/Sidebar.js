@@ -41,11 +41,11 @@ export default function Sidebar() {
   const history = useHistory();
 
   function changeRouteBoard() {
-    history.push("/board");
+    history.push("/Boards-Project/board");
   }
 
   function changeRouteHome() {
-    history.push("/");
+    history.push("/Boards-Project/");
   }
 
   const createBoards = async () => {

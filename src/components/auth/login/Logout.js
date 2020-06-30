@@ -49,7 +49,7 @@ function Logout(props) {
   );
   async function logout() {
     await firebase.signout();
-    props.history.push("/login");
+    props.history.push("/Boards-Project/login");
   }
 }
 
