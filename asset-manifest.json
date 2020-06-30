@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Boards-Project/static/css/main.707cffbe.chunk.css",
-    "main.js": "/Boards-Project/static/js/main.d32e1edd.chunk.js",
-    "main.js.map": "/Boards-Project/static/js/main.d32e1edd.chunk.js.map",
+    "main.js": "/Boards-Project/static/js/main.c4d932a6.chunk.js",
+    "main.js.map": "/Boards-Project/static/js/main.c4d932a6.chunk.js.map",
     "runtime-main.js": "/Boards-Project/static/js/runtime-main.b3968b8f.js",
     "runtime-main.js.map": "/Boards-Project/static/js/runtime-main.b3968b8f.js.map",
     "static/js/2.49b5cdb5.chunk.js": "/Boards-Project/static/js/2.49b5cdb5.chunk.js",
     "static/js/2.49b5cdb5.chunk.js.map": "/Boards-Project/static/js/2.49b5cdb5.chunk.js.map",
     "index.html": "/Boards-Project/index.html",
-    "precache-manifest.dc35ce16bca314a7dc715e23c7e0842f.js": "/Boards-Project/precache-manifest.dc35ce16bca314a7dc715e23c7e0842f.js",
+    "precache-manifest.da3d120bbbf0f53e3b2992d8daf4a9d9.js": "/Boards-Project/precache-manifest.da3d120bbbf0f53e3b2992d8daf4a9d9.js",
     "service-worker.js": "/Boards-Project/service-worker.js",
     "static/css/main.707cffbe.chunk.css.map": "/Boards-Project/static/css/main.707cffbe.chunk.css.map",
     "static/js/2.49b5cdb5.chunk.js.LICENSE.txt": "/Boards-Project/static/js/2.49b5cdb5.chunk.js.LICENSE.txt",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.b3968b8f.js",
     "static/js/2.49b5cdb5.chunk.js",
     "static/css/main.707cffbe.chunk.css",
-    "static/js/main.d32e1edd.chunk.js"
+    "static/js/main.c4d932a6.chunk.js"
   ]
 }
